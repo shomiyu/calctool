@@ -1,5 +1,6 @@
-const title = 'Nuxt.js project starter template'
-const description = 'This is Nuxt.js project starter template.'
+const title = 'コーディング単位計算ツール'
+const description =
+  '面倒なpxからemへの変換や、line-heightの計算、レスポンシブを考慮した横幅可変の計算など、コーディング時に計算機が必要になる値の変換をまとめて行えるツールです。'
 
 export default {
   /*
@@ -18,6 +19,9 @@ export default {
    */
   head: {
     title,
+    htmlAttrs: {
+      lang: 'ja',
+    },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
