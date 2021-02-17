@@ -1,6 +1,8 @@
 <template>
   <header :class="$options.name">
-    <h1 :class="`${$options.name}__title`">コーディング単位計算ツール</h1>
+    <h1 :class="`${$options.name}__title`">
+      <em>計算が苦手な文系のための</em>コーディング単位計算ツール
+    </h1>
   </header>
 </template>
 
@@ -19,6 +21,13 @@ export default {
 
   &__title {
     font-size: fz(18);
+
+    em {
+      font-size: fz(12);
+      font-style: normal;
+      display: block;
+      margin-bottom: em(8, 12);
+    }
   }
 }
 </style>
