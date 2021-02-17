@@ -37,7 +37,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/axios', '~/plugins/adobe-fonts'],
+  plugins: ['~/plugins/adobe-fonts'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -69,10 +69,6 @@ export default {
    */
   dotenv: {
     path: process.cwd(),
-  },
-  env: {
-    API_KEY: process.env.API_KEY,
-    BASE_URI: process.env.BASE_URI,
   },
   /*
    ** style-resources module configuration

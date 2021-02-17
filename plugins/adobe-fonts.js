@@ -2,7 +2,7 @@
 export default function ({ app }, inject) {
   const adobeFonts = (d) => {
     var config = {
-        kitId: 'tao8jsr',
+        kitId: process.env.KIT_ID,
         scriptTimeout: 3000,
         async: true,
       },
