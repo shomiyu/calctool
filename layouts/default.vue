@@ -1,6 +1,9 @@
 <template>
   <div>
-    <Nuxt />
+    <Header />
+    <main>
+      <Nuxt />
+    </main>
   </div>
 </template>
 
@@ -18,5 +21,10 @@ html {
 }
 html.wf-active {
   visibility: visible;
+}
+
+body {
+  background-image: url('/images/bg_pattern.svg');
+  background-repeat: repeat;
 }
 </style>
