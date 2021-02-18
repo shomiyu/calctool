@@ -1,16 +1,17 @@
 <template>
   <div :class="$options.name">
     <div v-for="(data, index) in calcData" :key="index">
-      <div v-if="data.dataType === 'arg'">
+      <template v-if="data.dataType === 'arg'">
         <Input
           :introduction="data.introduction"
-          :input="data.input"
+          v-model="data.input"
+          :placeholder="data.defaultNum"
           :label="data.endLabel"
         />
-      </div>
-      <div v-else-if="data.dataType === 'answer'">
+      </template>
+      <template v-else-if="data.dataType === 'answer'">
         <Output :output="Number(0)" />
-      </div>
+      </template>
     </div>
   </div>
 </template>

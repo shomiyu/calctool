@@ -27,12 +27,14 @@ export default {
         {
           dataType: 'arg',
           introduction: '現在のfont-sizeが',
+          defaultNum: 16,
           input: 16,
           endLabel: 'pxで',
         },
         {
           dataType: 'arg',
           introduction: '必要な値が',
+          defaultNum: 24,
           input: 24,
           endLabel: 'pxなら',
         },

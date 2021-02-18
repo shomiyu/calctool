@@ -10,8 +10,9 @@
               `${$options.name}__entryAction`,
             ]"
             type="text"
-            :placeholder="input"
+            :placeholder="placeholder"
             :value="input"
+            @input="$emit('updateInputNumber', $event.target.value)"
           />
           <span v-text="label" />
         </label>
@@ -24,10 +25,21 @@
 export default {
   name: 'Input',
 
+  model: {
+    prop: 'input',
+    event: 'updateInputNumber',
+  },
+
   props: {
     introduction: {
       type: String,
       default: '必要な値が',
+      required: false,
+    },
+
+    placeholder: {
+      type: Number,
+      default: 0,
       required: false,
     },
 
