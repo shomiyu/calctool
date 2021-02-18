@@ -12,7 +12,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .Header {
   background-color: $color-white;
   padding: em(19) em(48);

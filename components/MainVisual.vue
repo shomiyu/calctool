@@ -32,7 +32,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .MainVisual {
   padding: em(72) 1em;
   background-image: linear-gradient(25deg, #0634fc, #4061d9, #4085b6, #02a791);
