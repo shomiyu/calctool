@@ -3,10 +3,52 @@
     <div class="container">
       <h2 class="titlePrimary">px単位からem単位への変換</h2>
       <div class="contentFlex">
-        <div class="calcContents">
+        <!-- calcboard -->
+        <div class="calcContents" data-target="">
           <section>
             <h3>font-sizeに使う</h3>
-            <Calc :calc-data="getArgs" />
+            <div v-for="(data, catIndex) in calcData" :key="catIndex">
+              <div v-for="(content, index) in data.contents" :key="index">
+                <template v-if="content.dataType === 'arg'">
+                  <dl :class="$options.name">
+                    <dt
+                      :class="`${$options.name}__introduction`"
+                      v-text="content.introduction"
+                    />
+                    <dd>
+                      <form>
+                        <label>
+                          <input
+                            :class="[
+                              `${$options.name}__entry`,
+                              `${$options.name}__entryAction`,
+                            ]"
+                            type="text"
+                            :placeholder="content.defaultNum"
+                            v-model="content.inputNum"
+                          />
+                          <span v-text="content.endLabel" />
+                        </label>
+                      </form>
+                    </dd>
+                  </dl>
+                </template>
+                <template v-else-if="content.dataType === 'answer'">
+                  <dl :class="$options.name">
+                    <dt
+                      :class="`${$options.name}__introduction`"
+                      v-text="content.introduction"
+                    />
+                    <dd>
+                      <span v-text="changeEmAnswer" /><span
+                        v-if="content.unit !== ''"
+                        v-text="content.unit"
+                      />です！
+                    </dd>
+                  </dl>
+                </template>
+              </div>
+            </div>
           </section>
         </div>
         <aside class="sidebar">
@@ -20,69 +62,53 @@
 </template>
 
 <script>
+// import labelData from 'assets/json/data.json'
+
 export default {
   data() {
     return {
-      emFontSize: [
+      calcData: [
         {
-          dataType: 'arg',
-          introduction: '現在のfont-sizeが',
-          defaultNum: 16,
-          input: 16,
-          endLabel: 'pxで',
-        },
-        {
-          dataType: 'arg',
-          introduction: '必要な値が',
-          defaultNum: 24,
-          input: 24,
-          endLabel: 'pxなら',
-        },
-        {
-          dataType: 'answer',
-          output: Number,
-          unit: 'em',
+          category: 'pxToEm',
+          smallCategory: 'emFontSize',
+          contents: [
+            {
+              dataType: 'arg',
+              introduction: '現在のfont-sizeが',
+              inputNum: 16,
+              endLabel: 'pxで',
+            },
+            {
+              dataType: 'arg',
+              introduction: '必要な値が',
+              inputNum: 24,
+              input: 24,
+              endLabel: 'pxなら',
+            },
+            {
+              dataType: 'answer',
+              introduction: '設定値は',
+              output: Number,
+              unit: 'em',
+            },
+          ],
         },
       ],
-      // emSpace: {
-      //   arg1: 16,
-      //   arg2: 24,
-      //   answer: Number,
-      // },
-      // lineHeight: {
-      //   arg1: 28,
-      //   arg2: 16,
-      //   answer: Number,
-      // },
-      // lineHeightSpace: {
-      //   arg1: 48,
-      //   arg2: 24,
-      //   arg3: 16,
-      //   arg4: 40,
-      //   answer1: Number,
-      //   answer2: Number,
-      // },
-      // rate: {
-      //   arg1: 375,
-      //   arg2: 320,
-      //   answer: Number,
-      // },
-      // backCalc: {
-      //   arg1: 1440,
-      //   arg2: 90,
-      //   answer: Number,
-      // },
-      // retention: {
-      //   arg1: 200,
-      //   arg2: 300,
-      //   answer: Number,
-      // },
     }
   },
 
   computed: {
-    getArgs() {
-      return this.emFontSize
+    changeEmAnswer() {
+      const targetData = this.calcData.find((el) => {
+        return el.smallCategory === 'emFontSize'
+      })
+
+      const firstNum = targetData.contents[0].inputNum
+      const secondNum = targetData.contents[1].inputNum
+      let anser = targetData.contents[2].output
+
+      anser = secondNum / firstNum
+      return Math.round(anser * 1000) / 1000
     },
   },
 }
