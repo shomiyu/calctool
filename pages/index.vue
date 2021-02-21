@@ -23,9 +23,12 @@
                               `${$options.name}__entry`,
                               `${$options.name}__entryAction`,
                             ]"
+                            :data-target="`${data.smallCategory}${index + 1}`"
+                            :data-index="index + 1"
                             type="text"
                             :placeholder="content.defaultNum"
                             v-model="content.inputNum"
+                            @input="getCalcInput"
                           />
                           <span v-text="content.endLabel" />
                         </label>
@@ -40,7 +43,7 @@
                       v-text="content.introduction"
                     />
                     <dd>
-                      <span v-text="changeEmAnswer" /><span
+                      <span v-text="$store.state.emFontSize.answer" /><span
                         v-if="content.unit !== ''"
                         v-text="content.unit"
                       />です！
@@ -97,18 +100,21 @@ export default {
     }
   },
 
-  computed: {
-    changeEmAnswer() {
-      const targetData = this.calcData.find((el) => {
-        return el.smallCategory === 'emFontSize'
-      })
+  created() {
+    this.$store.commit('calcemFontSize')
+  },
 
-      const firstNum = targetData.contents[0].inputNum
-      const secondNum = targetData.contents[1].inputNum
-      let anser = targetData.contents[2].output
+  methods: {
+    getCalcInput(e) {
+      const element = e.currentTarget
+      const targetIndex = element.getAttribute('data-index')
+      const updateValue = e.target.value
 
-      anser = secondNum / firstNum
-      return Math.round(anser * 1000) / 1000
+      if (targetIndex === '1') {
+        this.$store.commit('calcEmFontSizeFirstArg', updateValue)
+      } else if (targetIndex === '2') {
+        this.$store.commit('calcEmFontSizeSecondArg', updateValue)
+      }
     },
   },
 }
