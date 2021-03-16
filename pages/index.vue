@@ -15,10 +15,10 @@
                   <form>
                     <label>
                       <input
+                        v-model.number="emFontSize"
                         class="inputFeild__entry inputFeild__entryAction"
                         type="text"
                         :placeholder="emFontSize"
-                        v-model.number="emFontSize"
                       />
                       <span>pxで</span>
                     </label>
@@ -31,10 +31,10 @@
                   <form>
                     <label>
                       <input
+                        v-model.number="emChangeSize"
                         class="inputFeild__entry inputFeild__entryAction"
                         type="text"
                         :placeholder="emChangeSize"
-                        v-model.number="emChangeSize"
                       />
                       <span>pxなら</span>
                     </label>
@@ -43,11 +43,21 @@
               </dl>
               <dl class="calcBoard__feild outputField">
                 <dt class="outputField__introduction">設定値は</dt>
-                <dd>
-                  <strong
-                    class="outputField__answer"
-                    v-text="changeEmAnswer"
-                  />emです！
+                <dd class="outputField__contents">
+                  <button
+                    type="button"
+                    title="値をコピー！"
+                    @click="handleCopy(changeEmAnswer, 'fontSizePxToEm')"
+                  >
+                    <strong
+                      ref="fontSizePxToEm"
+                      class="outputField__answer"
+                      v-text="changeEmAnswer"
+                    />emです！
+                  </button>
+                  <span v-if="copyMessage.fontSizePxToEm" class="copyMessage"
+                    >コピーしたよ！</span
+                  >
                 </dd>
               </dl>
             </div>
@@ -70,9 +80,11 @@
 export default {
   data() {
     return {
+      copyMessage: {
+        fontSizePxToEm: false,
+      },
       emFontSize: 16,
       emChangeSize: 24,
-      emAnswer: 0,
     }
   },
 
@@ -80,6 +92,24 @@ export default {
     changeEmAnswer() {
       const emAnswer = this.emChangeSize / this.emFontSize
       return Math.round(emAnswer * 1000) / 1000
+    },
+  },
+
+  methods: {
+    /**
+     * クリップボードにコピーする
+     */
+    handleCopy(output, key) {
+      this.$copyText(output).then(
+        () => {
+          this.copyMessage[key] = true
+          setTimeout(() => (this.copyMessage[key] = false), 500)
+        },
+        (e) => {
+          // エラー時コンソールに出力
+          console.log(e)
+        }
+      )
     },
   },
 }
@@ -180,9 +210,37 @@ export default {
     margin-bottom: em(8);
   }
 
+  &__contents {
+    position: relative;
+  }
+
   &__answer {
     font-size: fz(32);
     margin-right: em(4, 32);
+  }
+}
+
+.copyMessage {
+  font-size: fz(12);
+  display: inline-block;
+  background-color: $color-white;
+  padding: em(4, 12) em(8, 12);
+  border-radius: 5px;
+  border: 1px solid $color-gray;
+  position: absolute;
+  top: em(-30, 12);
+  left: -10%;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    border-top: 8px solid $color-gray;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 </style>
