@@ -1,67 +1,67 @@
 <template>
-  <article class="mainContents">
+  <div class="mainContents">
     <div class="container">
-      <h2 class="titlePrimary">px単位からem単位への変換</h2>
       <div class="contentFlex">
         <!-- calcboard -->
-        <div class="calcContents" data-target="">
-          <section>
-            <h3>font-sizeに使う</h3>
-            <div v-for="(data, catIndex) in calcData" :key="catIndex">
-              <div v-for="(content, index) in data.contents" :key="index">
-                <template v-if="content.dataType === 'arg'">
-                  <dl :class="$options.name">
-                    <dt
-                      :class="`${$options.name}__introduction`"
-                      v-text="content.introduction"
-                    />
-                    <dd>
-                      <form>
-                        <label>
-                          <input
-                            :class="[
-                              `${$options.name}__entry`,
-                              `${$options.name}__entryAction`,
-                            ]"
-                            :data-target="`${data.smallCategory}${index + 1}`"
-                            :data-index="index + 1"
-                            type="text"
-                            :placeholder="content.defaultNum"
-                            v-model="content.inputNum"
-                            @input="getCalcInput"
-                          />
-                          <span v-text="content.endLabel" />
-                        </label>
-                      </form>
-                    </dd>
-                  </dl>
-                </template>
-                <template v-else-if="content.dataType === 'answer'">
-                  <dl :class="$options.name">
-                    <dt
-                      :class="`${$options.name}__introduction`"
-                      v-text="content.introduction"
-                    />
-                    <dd>
-                      <span v-text="$store.state.emFontSize.answer" /><span
-                        v-if="content.unit !== ''"
-                        v-text="content.unit"
-                      />です！
-                    </dd>
-                  </dl>
-                </template>
-              </div>
+        <article class="calcContents" data-target="">
+          <h2 class="titlePrimary">px単位からem単位への変換</h2>
+          <!-- fontSize -->
+          <section class="calcBoard">
+            <h3 class="calcBoard__title">font-sizeに使う</h3>
+            <div class="calcBoard__contents">
+              <dl class="calcBoard__feild inputFeild">
+                <dt class="inputFeild__introduction">現在のfont-sizeが</dt>
+                <dd>
+                  <form>
+                    <label>
+                      <input
+                        class="inputFeild__entry inputFeild__entryAction"
+                        type="text"
+                        :placeholder="emFontSize"
+                        v-model.number="emFontSize"
+                      />
+                      <span>pxで</span>
+                    </label>
+                  </form>
+                </dd>
+              </dl>
+              <dl class="calcBoard__feild inputFeild">
+                <dt class="inputFeild__introduction">必要な値が</dt>
+                <dd>
+                  <form>
+                    <label>
+                      <input
+                        class="inputFeild__entry inputFeild__entryAction"
+                        type="text"
+                        :placeholder="emChangeSize"
+                        v-model.number="emChangeSize"
+                      />
+                      <span>pxなら</span>
+                    </label>
+                  </form>
+                </dd>
+              </dl>
+              <dl class="calcBoard__feild outputField">
+                <dt class="outputField__introduction">設定値は</dt>
+                <dd>
+                  <strong
+                    class="outputField__answer"
+                    v-text="changeEmAnswer"
+                  />emです！
+                </dd>
+              </dl>
             </div>
           </section>
-        </div>
-        <aside class="sidebar">
+          <!-- /fontSize -->
+        </article>
+        <div class="sidebar">
           <button type="button">px → em</button>
           <button type="button">line-height</button>
           <button type="button">px → %/vw</button>
-        </aside>
+        </div>
       </div>
     </div>
-  </article>
+  </div>
 </template>
 
 <script>
@@ -70,51 +70,16 @@
 export default {
   data() {
     return {
-      calcData: [
-        {
-          category: 'pxToEm',
-          smallCategory: 'emFontSize',
-          contents: [
-            {
-              dataType: 'arg',
-              introduction: '現在のfont-sizeが',
-              inputNum: 16,
-              endLabel: 'pxで',
-            },
-            {
-              dataType: 'arg',
-              introduction: '必要な値が',
-              inputNum: 24,
-              input: 24,
-              endLabel: 'pxなら',
-            },
-            {
-              dataType: 'answer',
-              introduction: '設定値は',
-              output: Number,
-              unit: 'em',
-            },
-          ],
-        },
-      ],
+      emFontSize: 16,
+      emChangeSize: 24,
+      emAnswer: 0,
     }
   },
 
-  created() {
-    this.$store.commit('calcemFontSize')
-  },
-
-  methods: {
-    getCalcInput(e) {
-      const element = e.currentTarget
-      const targetIndex = element.getAttribute('data-index')
-      const updateValue = e.target.value
-
-      if (targetIndex === '1') {
-        this.$store.commit('calcEmFontSizeFirstArg', updateValue)
-      } else if (targetIndex === '2') {
-        this.$store.commit('calcEmFontSizeSecondArg', updateValue)
-      }
+  computed: {
+    changeEmAnswer() {
+      const emAnswer = this.emChangeSize / this.emFontSize
+      return Math.round(emAnswer * 1000) / 1000
     },
   },
 }
@@ -136,10 +101,88 @@ export default {
 .container {
   max-width: 1200px;
   margin: auto;
-  padding: 0 em(24);
 }
 
 .contentFlex {
   display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.calcContents {
+  max-width: 816px;
+  width: 100%;
+}
+
+.calcBoard {
+  background-color: $color-lightYellow;
+  border: 2px solid $color-gray;
+  border-radius: 5px;
+  padding: em(32) em(32) em(40);
+
+  &__title {
+    font-size: fz(20);
+    margin-bottom: 1em;
+  }
+
+  &__contents {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__feild {
+    width: calc(100% / 3);
+    max-width: 250px;
+  }
+}
+
+.sidebar {
+  max-width: 312px;
+  width: 100%;
+}
+
+.inputFeild {
+  &__introduction {
+    margin-bottom: em(8);
+  }
+
+  &__entry {
+    font-size: fz(18);
+    line-height: 2;
+    width: 120px;
+    height: 48px;
+    background-color: $color-white;
+    border: 1px solid #e6e6e6;
+    border-radius: 2px;
+    padding-left: em(16, 18);
+    margin-right: em(16, 18);
+  }
+
+  &__entryAction {
+    outline: 2px solid transparent;
+    outline-offset: 100px;
+    transition: all 0.2s ease;
+
+    &:focus {
+      outline: 2px solid $color-black;
+      outline-offset: 0;
+    }
+
+    &:active {
+      position: relative;
+      top: 4px;
+    }
+  }
+}
+
+.outputField {
+  &__introduction {
+    margin-bottom: em(8);
+  }
+
+  &__answer {
+    font-size: fz(32);
+    margin-right: em(4, 32);
+  }
 }
 </style>
