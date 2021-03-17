@@ -1,10 +1,10 @@
 <template>
   <article class="calcContents">
-    <h2 class="titlePrimary">割合から固定値に変換する計算</h2>
+    <h1 class="titlePrimary">割合から固定値に変換する計算</h1>
 
     <!-- 割合からpx -->
     <section class="calcSection">
-      <h3 class="calcSection__title">割合を元にpx値を求める</h3>
+      <h2 class="calcSection__title">割合を元にpx値を求める</h2>
       <CalcBoard
         :calc-data="rateToPx"
         @onInput="handleChangeVal($event, 'rateToPx')"

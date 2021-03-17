@@ -1,10 +1,10 @@
 <template>
   <article class="calcContents">
-    <h2 class="titlePrimary">固定値から割合に変換する計算</h2>
+    <h1 class="titlePrimary">固定値から割合に変換する計算</h1>
 
     <!-- pxから割合 -->
     <section class="calcSection">
-      <h3 class="calcSection__title">px から %(vw) に変換する</h3>
+      <h2 class="calcSection__title">px から %(vw) に変換する</h2>
       <CalcBoard
         :calc-data="pxToRate"
         @onInput="handleChangeVal($event, 'pxToRate')"

@@ -1,9 +1,9 @@
 <template>
   <article class="calcContents">
-    <h2 class="titlePrimary">縦横比を保持したまま可変</h2>
+    <h1 class="titlePrimary">縦横比を保持したまま可変</h1>
     <!-- 縦横比 -->
     <section class="calcSection">
-      <h3 class="calcSection__title">padding-top を求める</h3>
+      <h2 class="calcSection__title">padding-top を求める</h2>
       <CalcBoard
         :calc-data="paddingTop"
         @onInput="handleChangeVal($event, 'paddingTop')"

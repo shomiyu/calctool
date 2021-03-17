@@ -1,8 +1,10 @@
 <template>
   <header :class="$options.name">
-    <h1 :class="`${$options.name}__title`">
-      <em>計算が苦手な文系のための</em>コーディング単位計算ツール
-    </h1>
+    <p :class="`${$options.name}__title`">
+      <nuxt-link to="/">
+        <em>計算が苦手な文系のための</em>コーディング単位計算ツール
+      </nuxt-link>
+    </p>
   </header>
 </template>
 
@@ -21,6 +23,7 @@ export default {
 
   &__title {
     font-size: fz(18);
+    font-weight: bold;
 
     em {
       font-size: fz(12);

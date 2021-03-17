@@ -8,9 +8,11 @@
           <div class="contentFlex">
             <Nuxt />
             <div class="sidebar">
-              <button type="button">px → em</button>
-              <button type="button">line-height</button>
-              <button type="button">px → %/vw</button>
+              <nuxt-link to="/">px → em</nuxt-link>
+              <nuxt-link to="/lineheight">line-height</nuxt-link>
+              <nuxt-link to="/px-rate">px → %/vw</nuxt-link>
+              <nuxt-link to="/rate-px">% → px</nuxt-link>
+              <nuxt-link to="/keep-rate">縦横比を保持したまま可変</nuxt-link>
             </div>
           </div>
         </div>

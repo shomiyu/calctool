@@ -1,10 +1,9 @@
 <template>
   <article class="calcContents">
-    <h2 class="titlePrimary">px単位からem単位への変換</h2>
-
+    <h1 class="titlePrimary">px単位からem単位への変換</h1>
     <!-- fontSize -->
     <section class="calcSection">
-      <h3 class="calcSection__title">font-size プロパティに em を使う</h3>
+      <h2 class="calcSection__title">font-size プロパティに em を使う</h2>
       <CalcBoard
         :calc-data="fontSizePxToEm"
         @onInput="handleChangeVal($event, 'fontSizePxToEm')"
@@ -13,7 +12,7 @@
 
     <!-- fontSize以外 -->
     <section class="calcSection">
-      <h3 class="calcSection__title">font-size 以外のプロパティに em を使う</h3>
+      <h2 class="calcSection__title">font-size 以外のプロパティに em を使う</h2>
       <CalcBoard
         :calc-data="otherPxToEm"
         @onInput="handleChangeVal($event, 'otherPxToEm')"
