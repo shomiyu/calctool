@@ -32,7 +32,7 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['ress', '~/assets/scss/base.scss'],
+  css: ['ress', '~/assets/scss/base.scss', '~/assets/scss/common.scss'],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins

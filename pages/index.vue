@@ -1,35 +1,25 @@
 <template>
-  <div class="mainContents">
-    <div class="container">
-      <div class="contentFlex">
-        <!-- calcboard -->
-        <article class="calcContents" data-target="">
-          <h2 class="titlePrimary">px単位からem単位への変換</h2>
-          <!-- fontSize -->
-          <section class="calcSection">
-            <h3 class="calcSection__title">font-sizeに使う</h3>
-            <CalcBoard
-              :calc-data="fontSizePxToEm"
-              @onInput="handleChangeFontSizePxToEmVal"
-            />
-          </section>
-          <!-- fontSize -->
-          <section class="calcSection">
-            <h3 class="calcSection__title">em / paddingに em を使う</h3>
-            <CalcBoard
-              :calc-data="otherPxToEm"
-              @onInput="handleChangeOtherPxToEmVal"
-            />
-          </section>
-        </article>
-        <div class="sidebar">
-          <button type="button">px → em</button>
-          <button type="button">line-height</button>
-          <button type="button">px → %/vw</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <article class="calcContents">
+    <h2 class="titlePrimary">px単位からem単位への変換</h2>
+
+    <!-- fontSize -->
+    <section class="calcSection">
+      <h3 class="calcSection__title">font-size プロパティに em を使う</h3>
+      <CalcBoard
+        :calc-data="fontSizePxToEm"
+        @onInput="handleChangeVal($event, 'fontSizePxToEm')"
+      />
+    </section>
+
+    <!-- fontSize以外 -->
+    <section class="calcSection">
+      <h3 class="calcSection__title">font-size 以外のプロパティに em を使う</h3>
+      <CalcBoard
+        :calc-data="otherPxToEm"
+        @onInput="handleChangeVal($event, 'otherPxToEm')"
+      />
+    </section>
+  </article>
 </template>
 
 <script>
@@ -90,7 +80,6 @@ export default {
   },
 
   created() {
-    // 初期値計算
     this.fontSizePxToEm[2].val =
       this.fontSizePxToEm[1].val / this.fontSizePxToEm[0].val
 
@@ -98,82 +87,38 @@ export default {
   },
 
   methods: {
-    handleChangeFontSizePxToEmVal(...args) {
-      // 入力のあったデータを更新
-      const [argNum, id] = args
-      this.fontSizePxToEm[id].val = argNum
+    /**
+     * 計算
+     */
+    handleChangeVal(args, type) {
+      if (type === 'fontSizePxToEm') {
+        // 入力のあったデータを更新
+        this.fontSizePxToEm[args.id].val = args.argNum
 
-      // 再計算
-      const firstNum = this.fontSizePxToEm[0].val
-      const secondNum = this.fontSizePxToEm[1].val
-      const answer = secondNum / firstNum
+        // 再計算
+        const firstNum = this.fontSizePxToEm[0].val
+        const secondNum = this.fontSizePxToEm[1].val
+        const answer = secondNum / firstNum
 
-      // 小数点の調整
-      this.fontSizePxToEm[2].val = Math.round(answer * 1000) / 1000
-      return this.fontSizePxToEm[2].val
-    },
+        // 小数点の調整
+        this.fontSizePxToEm[2].val = Math.round(answer * 1000) / 1000
+        return this.fontSizePxToEm[2].val
+      } else if (type === 'otherPxToEm') {
+        // 入力のあったデータを更新
+        this.otherPxToEm[args.id].val = args.argNum
 
-    handleChangeOtherPxToEmVal(...args) {
-      // 入力のあったデータを更新
-      const [argNum, id] = args
-      this.otherPxToEm[id].val = argNum
+        // 再計算
+        const firstNum = this.otherPxToEm[0].val
+        const secondNum = this.otherPxToEm[1].val
+        const answer = secondNum / firstNum
 
-      // 再計算
-      const firstNum = this.otherPxToEm[0].val
-      const secondNum = this.otherPxToEm[1].val
-      const answer = secondNum / firstNum
-
-      // 小数点の調整
-      this.otherPxToEm[2].val = Math.round(answer * 1000) / 1000
-      return this.otherPxToEm[2].val
+        // 小数点の調整
+        this.otherPxToEm[2].val = Math.round(answer * 1000) / 1000
+        return this.otherPxToEm[2].val
+      }
     },
   },
 }
 </script>
 
-<style lang="scss" scoped>
-.mainContents {
-  padding: em(40) 0 em(72);
-}
-
-.titlePrimary {
-  font-size: fz(24);
-  font-family: 'maru-maru-gothic-blr-stdn', sans-serif;
-  color: $base-text-color;
-  text-align: center;
-  margin-bottom: em(32, 24);
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-}
-
-.contentFlex {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.calcContents {
-  max-width: 816px;
-  width: 100%;
-}
-
-.calcSection {
-  background-color: $color-lightYellow;
-  border: 2px solid $color-gray;
-  border-radius: 5px;
-  padding: em(32) em(32) em(40);
-
-  &__title {
-    font-size: fz(20);
-    margin-bottom: 1em;
-  }
-}
-
-.sidebar {
-  max-width: 312px;
-  width: 100%;
-}
-</style>
+<style lang="scss" scoped></style>

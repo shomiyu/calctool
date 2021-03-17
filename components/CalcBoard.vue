@@ -2,8 +2,8 @@
   <div :class="$options.name">
     <div
       v-for="data in calcData"
-      :class="`${$options.name}__feild`"
       :key="data.id"
+      :class="`${$options.name}__feild`"
     >
       <template v-if="data.type === 'arg'">
         <Input
@@ -46,7 +46,11 @@ export default {
 
   methods: {
     handleInput(arg, id) {
-      this.$emit('onInput', arg, id)
+      const emitData = {
+        argNum: arg,
+        id,
+      }
+      this.$emit('onInput', emitData)
     },
   },
 }

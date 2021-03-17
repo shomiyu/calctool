@@ -1,0 +1,33 @@
+.titlePrimary {
+  font-size: fz(24);
+  font-family: 'maru-maru-gothic-blr-stdn', sans-serif;
+  color: $base-text-color;
+  text-align: center;
+  margin-bottom: em(32, 24);
+}
+
+.calcContents {
+  max-width: 816px;
+  width: 100%;
+}
+
+.calcSection {
+  background-color: $color-lightYellow;
+  border: 2px solid $color-gray;
+  border-radius: 5px;
+  padding: em(32) em(32) em(40);
+
+  &__title {
+    font-size: fz(20);
+    margin-bottom: 1em;
+  }
+
+  & + & {
+    margin-top: 2em;
+  }
+}
+
+.sidebar {
+  max-width: 312px;
+  width: 100%;
+}

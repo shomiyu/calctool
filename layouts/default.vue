@@ -3,7 +3,18 @@
     <Header />
     <main>
       <MainVisual />
-      <Nuxt />
+      <div class="mainContents">
+        <div class="container">
+          <div class="contentFlex">
+            <Nuxt />
+            <div class="sidebar">
+              <button type="button">px → em</button>
+              <button type="button">line-height</button>
+              <button type="button">px → %/vw</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
   </div>
 </template>
@@ -24,8 +35,18 @@ html.wf-active {
   visibility: visible;
 }
 
-body {
-  background-image: url('/images/bg_pattern.svg');
-  background-repeat: repeat;
+.mainContents {
+  padding: em(56) 0 em(72);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.contentFlex {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 </style>
