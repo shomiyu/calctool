@@ -2,7 +2,7 @@
   <article class="calcContents">
     <h2 class="titlePrimary">固定値から割合に変換する計算</h2>
 
-    <!-- pxから倍率 -->
+    <!-- pxから割合 -->
     <section class="calcSection">
       <h3 class="calcSection__title">px から %(vw) に変換する</h3>
       <CalcBoard
@@ -10,8 +10,6 @@
         @onInput="handleChangeVal($event, 'pxToRate')"
       />
     </section>
-
-    <!-- line-height間 -->
   </article>
 </template>
 
