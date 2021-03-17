@@ -1,6 +1,10 @@
 <template>
   <div :class="$options.name">
-    <div v-for="data in calcData" :key="data.id">
+    <div
+      v-for="data in calcData"
+      :class="`${$options.name}__feild`"
+      :key="data.id"
+    >
       <template v-if="data.type === 'arg'">
         <Input
           :introduction="data.introduction"
@@ -11,7 +15,11 @@
         />
       </template>
       <template v-else-if="data.type === 'answer'">
-        <Output :output="Number(data.val)" />
+        <Output
+          :introduction="data.introduction"
+          :output="Number(data.val)"
+          :unit="data.unit"
+        />
       </template>
     </div>
   </div>
@@ -45,6 +53,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.Calc {
+.CalcBoard {
+  display: flex;
+  align-items: flex-start;
+
+  &__feild {
+    width: calc(100% / 3);
+    max-width: 250px;
+  }
 }
 </style>

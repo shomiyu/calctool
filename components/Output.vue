@@ -1,8 +1,14 @@
 <template>
   <dl :class="$options.name">
     <dt :class="`${$options.name}__introduction`" v-text="introduction" />
-    <dd>
-      <span v-text="output" /><span v-if="unit !== ''" v-text="unit" />です！
+    <dd :class="`${$options.name}__contents`">
+      <button type="button" title="値をコピー！" @click="handleCopy(output)">
+        <strong :class="`${$options.name}__answer`" v-text="output" /><span
+          v-if="unit !== ''"
+          v-text="unit"
+        />です！
+      </button>
+      <span v-if="showCopyMessage" class="copyMessage">コピーしたよ😎</span>
     </dd>
   </dl>
 </template>
@@ -29,41 +35,70 @@ export default {
       required: false,
     },
   },
+
+  data() {
+    return {
+      showCopyMessage: false,
+    }
+  },
+
+  methods: {
+    /**
+     * クリップボードにコピーする
+     */
+    handleCopy(data) {
+      this.$copyText(data).then(
+        () => {
+          this.showCopyMessage = true
+          setTimeout(() => (this.showCopyMessage = false), 800)
+        },
+        (e) => {
+          // エラー時コンソールに出力
+          console.log(e)
+        }
+      )
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-.Input {
+.Output {
   &__introduction {
     margin-bottom: em(8);
   }
 
-  &__entry {
-    font-size: fz(18);
-    line-height: 2;
-    width: 120px;
-    height: 48px;
-    background-color: $color-white;
-    border: 1px solid #e6e6e6;
-    border-radius: 2px;
-    padding-left: em(16, 18);
-    margin-right: em(16, 18);
+  &__contents {
+    position: relative;
   }
 
-  &__entryAction {
-    outline: 2px solid transparent;
-    outline-offset: 100px;
-    transition: all 0.2s ease;
+  &__answer {
+    font-size: fz(32);
+    margin-right: em(4, 32);
+  }
+}
 
-    &:focus {
-      outline: 2px solid $color-black;
-      outline-offset: 0;
-    }
+.copyMessage {
+  font-size: fz(12);
+  display: inline-block;
+  background-color: $color-white;
+  padding: em(4, 12) em(8, 12);
+  border-radius: 5px;
+  border: 1px solid $color-black;
+  position: absolute;
+  top: em(-30, 12);
+  left: -10%;
 
-    &:active {
-      position: relative;
-      top: 4px;
-    }
+  &::after {
+    content: '';
+    display: inline-block;
+    border-top: 8px solid $color-black;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
   }
 }
 </style>
