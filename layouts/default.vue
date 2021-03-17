@@ -6,14 +6,8 @@
       <div class="mainContents">
         <div class="container">
           <div class="contentFlex">
+            <Sidebar />
             <Nuxt />
-            <div class="sidebar">
-              <nuxt-link to="/">px → em</nuxt-link>
-              <nuxt-link to="/lineheight">line-height</nuxt-link>
-              <nuxt-link to="/px-rate">px → %/vw</nuxt-link>
-              <nuxt-link to="/rate-px">% → px</nuxt-link>
-              <nuxt-link to="/keep-rate">縦横比を保持したまま可変</nuxt-link>
-            </div>
           </div>
         </div>
       </div>
@@ -48,6 +42,7 @@ html.wf-active {
 
 .contentFlex {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
 }

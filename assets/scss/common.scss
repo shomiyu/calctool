@@ -1,3 +1,18 @@
+.visuallyHidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
 .titlePrimary {
   font-size: fz(24);
   font-family: 'maru-maru-gothic-blr-stdn', sans-serif;
@@ -25,9 +40,4 @@
   & + & {
     margin-top: 2em;
   }
-}
-
-.sidebar {
-  max-width: 312px;
-  width: 100%;
 }
