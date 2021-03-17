@@ -45,6 +45,7 @@ export default {
    */
   plugins: [
     '~/plugins/adobe-fonts',
+    '~/plugins/utils',
     { src: '~/plugins/local-storage', mode: 'client' },
   ],
   /*

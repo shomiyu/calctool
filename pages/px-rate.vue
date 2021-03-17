@@ -20,10 +20,10 @@
         </button>
         <transition
           name="slide"
-          @before-enter="beforeEnter"
-          @enter="enter"
-          @before-leave="beforeLeave"
-          @leave="leave"
+          @before-enter="$beforeEnter($event)"
+          @enter="$enter($event)"
+          @before-leave="$beforeLeave($event)"
+          @leave="$leave($event)"
         >
           <article v-show="isShowTip" class="tips__contents slide">
             <h3>%単位とvw単位</h3>
@@ -127,29 +127,6 @@ export default {
         return this.pxToRate[2].val
       }
     },
-
-    /**
-     * スライド開閉要素の高さ取得
-     */
-    beforeEnter(el) {
-      el.style.height = '0'
-    },
-
-    enter(el) {
-      this.contentHeight = el.scrollHeight
-      el.style.height = el.scrollHeight + 'px'
-    },
-
-    beforeLeave(el) {
-      el.style.height = el.scrollHeight + 'px'
-    },
-
-    leave(el) {
-      this.contentHeight = el.scrollHeight
-      el.style.height = '0'
-    },
   },
 }
 </script>
-
-<style lang="scss" scoped></style>
