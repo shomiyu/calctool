@@ -25,7 +25,7 @@
           @leave="leave"
         >
           <article v-show="isShowTip" class="tips__contents slide">
-            <h3>em単位について</h3>
+            <h3>em単位ってどうやって使う？</h3>
             <p>emはfont-sizeを基準に相対的に変化する単位です。</p>
             <p>
               ルートのfont-sizeを基準にするrem単位と違って、親要素のfont-sizeを基準に変化するのがemです。<br />そのため、要素のfont-sizeに合わせて可変するような余白関連に使用すると便利です。
