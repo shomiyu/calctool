@@ -6,7 +6,7 @@
       <div id="target" class="mainContents">
         <div class="container">
           <div class="contentFlex">
-            <Sidebar />
+            <Sidebar class="sidebar" />
             <Nuxt />
           </div>
         </div>
@@ -46,5 +46,10 @@ html.wf-active {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
+}
+
+.sidebar {
+  position: sticky;
+  top: 2em;
 }
 </style>

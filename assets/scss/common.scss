@@ -13,8 +13,9 @@
   margin: -1px;
 }
 
+// h1
 .titlePrimary {
-  font-size: fz(24);
+  font-size: fz(28);
   font-family: 'maru-maru-gothic-blr-stdn', sans-serif;
   color: $base-text-color;
   text-align: center;
@@ -32,8 +33,9 @@
   border-radius: 5px;
   padding: em(32) em(32) em(40);
 
+  // h2
   &__title {
-    font-size: fz(20);
+    font-size: fz(22);
     margin-bottom: 1em;
   }
 
