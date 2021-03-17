@@ -6,7 +6,7 @@
         :class="{ 'is-active': $store.state.activeSidebarMenu === 'index' }"
         class="pageList__item"
       >
-        <nuxt-link to="/">px → em</nuxt-link>
+        <nuxt-link to="/#target">px → em</nuxt-link>
       </li>
       <li
         :class="{
@@ -14,13 +14,13 @@
         }"
         class="pageList__item"
       >
-        <nuxt-link to="/lineheight">line-height</nuxt-link>
+        <nuxt-link to="/lineheight#target">line-height</nuxt-link>
       </li>
       <li
         :class="{ 'is-active': $store.state.activeSidebarMenu === 'px-rate' }"
         class="pageList__item"
       >
-        <nuxt-link to="/px-rate">px → %/vw</nuxt-link>
+        <nuxt-link to="/px-rate#target">px → %/vw</nuxt-link>
       </li>
       <li
         :class="{
@@ -28,7 +28,7 @@
         }"
         class="pageList__item"
       >
-        <nuxt-link to="/rate-px">% → px</nuxt-link>
+        <nuxt-link to="/rate-px#target">% → px</nuxt-link>
       </li>
       <li
         :class="{
@@ -36,7 +36,7 @@
         }"
         class="pageList__item"
       >
-        <nuxt-link to="/keep-rate">縦横比を保持したまま可変</nuxt-link>
+        <nuxt-link to="/keep-rate#target">縦横比を保持したまま可変</nuxt-link>
       </li>
     </ul>
   </nav>
@@ -64,6 +64,11 @@ export default {
       padding: em(20);
       border: 2px solid $color-gray;
       border-radius: 5px;
+
+      &:hover {
+        opacity: 0.8;
+        transition: 0.3s all ease-in-out;
+      }
     }
 
     &.is-active {

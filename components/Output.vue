@@ -2,7 +2,12 @@
   <dl :class="$options.name">
     <dt :class="`${$options.name}__introduction`" v-text="introduction" />
     <dd :class="`${$options.name}__contents`">
-      <button type="button" title="値をコピー！" @click="handleCopy(output)">
+      <button
+        type="button"
+        title="値をコピー！"
+        class="clickAble"
+        @click="handleCopy(output)"
+      >
         <strong :class="`${$options.name}__answer`" v-text="output" /><span
           v-if="unit !== ''"
           v-text="unit"
@@ -75,6 +80,13 @@ export default {
   &__answer {
     font-size: fz(32);
     margin-right: em(4, 32);
+  }
+}
+
+.clickAble {
+  &:hover {
+    opacity: 0.7;
+    transition: 0.3s all ease-in-out;
   }
 }
 

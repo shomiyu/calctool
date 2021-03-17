@@ -3,7 +3,7 @@
     <Header />
     <main>
       <MainVisual />
-      <div class="mainContents">
+      <div id="target" class="mainContents">
         <div class="container">
           <div class="contentFlex">
             <Sidebar />
