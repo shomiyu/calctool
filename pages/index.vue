@@ -61,6 +61,11 @@
                 </dd>
               </dl>
             </div>
+
+            <Calc
+              :calc-data="fontSizePxToEm"
+              @onInput="handleChangeFontSizePxToEmVal"
+            />
           </section>
           <!-- /fontSize -->
         </article>
@@ -75,8 +80,6 @@
 </template>
 
 <script>
-// import labelData from 'assets/json/data.json'
-
 export default {
   data() {
     return {
@@ -85,6 +88,31 @@ export default {
       },
       emFontSize: 16,
       emChangeSize: 24,
+      fontSizePxToEm: [
+        {
+          id: 0,
+          type: 'arg',
+          introduction: '現在のfont-sizeが',
+          val: 16,
+          defaultNum: 16,
+          endLabel: 'pxで',
+        },
+        {
+          id: 1,
+          type: 'arg',
+          introduction: '必要な値が',
+          val: 24,
+          defaultNum: 24,
+          endLabel: 'pxなら',
+        },
+        {
+          id: 2,
+          type: 'answer',
+          introduction: '設定値は',
+          val: Number,
+          unit: 'em',
+        },
+      ],
     }
   },
 
@@ -95,7 +123,23 @@ export default {
     },
   },
 
+  created() {
+    this.fontSizePxToEm[2].val =
+      this.fontSizePxToEm[1].val / this.fontSizePxToEm[0].val
+  },
+
   methods: {
+    handleChangeFontSizePxToEmVal(...args) {
+      const [argNum, id] = args
+      this.fontSizePxToEm[id].val = argNum
+
+      const firstNum = this.fontSizePxToEm[0].val
+      const secondNum = this.fontSizePxToEm[1].val
+      this.fontSizePxToEm[2].val = secondNum / firstNum
+
+      return Math.round(this.fontSizePxToEm[2].val * 1000) / 1000
+    },
+
     /**
      * クリップボードにコピーする
      */

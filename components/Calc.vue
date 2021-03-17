@@ -1,16 +1,17 @@
 <template>
   <div :class="$options.name">
-    <div v-for="(data, index) in calcData" :key="index">
-      <template v-if="data.dataType === 'arg'">
+    <div v-for="data in calcData" :key="data.id">
+      <template v-if="data.type === 'arg'">
         <Input
           :introduction="data.introduction"
-          v-model="data.input"
+          :input="data.defaultNum"
           :placeholder="data.defaultNum"
           :label="data.endLabel"
+          @onInput="handleInput($event, data.id)"
         />
       </template>
-      <template v-else-if="data.dataType === 'answer'">
-        <Output :output="Number(0)" />
+      <template v-else-if="data.type === 'answer'">
+        <Output :output="Number(data.val)" />
       </template>
     </div>
   </div>
@@ -32,6 +33,12 @@ export default {
       const data = this.calcData
 
       return data
+    },
+  },
+
+  methods: {
+    handleInput(arg, id) {
+      this.$emit('onInput', arg, id)
     },
   },
 }

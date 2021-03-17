@@ -9,10 +9,11 @@
               `${$options.name}__entry`,
               `${$options.name}__entryAction`,
             ]"
-            type="text"
+            type="number"
+            number
             :placeholder="placeholder"
             :value="input"
-            @input="$emit('updateInputNumber', $event.target.value)"
+            @input="$emit('onInput', $event.target.value)"
           />
           <span v-text="label" />
         </label>
@@ -91,5 +92,16 @@ export default {
       top: 4px;
     }
   }
+}
+
+// スピンボタン削除
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type='number'] {
+  -moz-appearance: textfield;
 }
 </style>
