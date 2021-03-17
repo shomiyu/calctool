@@ -13,6 +13,14 @@
               @onInput="handleChangeFontSizePxToEmVal"
             />
           </section>
+          <!-- fontSize -->
+          <section class="calcSection">
+            <h3 class="calcSection__title">em / paddingに em を使う</h3>
+            <CalcBoard
+              :calc-data="otherPxToEm"
+              @onInput="handleChangeOtherPxToEmVal"
+            />
+          </section>
         </article>
         <div class="sidebar">
           <button type="button">px → em</button>
@@ -32,7 +40,32 @@ export default {
         {
           id: 0,
           type: 'arg',
-          introduction: '現在のfont-sizeが',
+          introduction: '親要素のfont-sizeが',
+          val: 16,
+          defaultNum: 16,
+          endLabel: 'pxで',
+        },
+        {
+          id: 1,
+          type: 'arg',
+          introduction: '設定したいfont-sizeが',
+          val: 18,
+          defaultNum: 18,
+          endLabel: 'pxなら',
+        },
+        {
+          id: 2,
+          type: 'answer',
+          introduction: '設定値は',
+          val: Number,
+          unit: 'em',
+        },
+      ],
+      otherPxToEm: [
+        {
+          id: 0,
+          type: 'arg',
+          introduction: 'その要素のfont-sizeが',
           val: 16,
           defaultNum: 16,
           endLabel: 'pxで',
@@ -49,7 +82,7 @@ export default {
           id: 2,
           type: 'answer',
           introduction: '設定値は',
-          val: Math.round(Number * 1000) / 1000,
+          val: Number,
           unit: 'em',
         },
       ],
@@ -60,6 +93,8 @@ export default {
     // 初期値計算
     this.fontSizePxToEm[2].val =
       this.fontSizePxToEm[1].val / this.fontSizePxToEm[0].val
+
+    this.otherPxToEm[2].val = this.otherPxToEm[1].val / this.otherPxToEm[0].val
   },
 
   methods: {
@@ -76,6 +111,21 @@ export default {
       // 小数点の調整
       this.fontSizePxToEm[2].val = Math.round(answer * 1000) / 1000
       return this.fontSizePxToEm[2].val
+    },
+
+    handleChangeOtherPxToEmVal(...args) {
+      // 入力のあったデータを更新
+      const [argNum, id] = args
+      this.otherPxToEm[id].val = argNum
+
+      // 再計算
+      const firstNum = this.otherPxToEm[0].val
+      const secondNum = this.otherPxToEm[1].val
+      const answer = secondNum / firstNum
+
+      // 小数点の調整
+      this.otherPxToEm[2].val = Math.round(answer * 1000) / 1000
+      return this.otherPxToEm[2].val
     },
   },
 }
