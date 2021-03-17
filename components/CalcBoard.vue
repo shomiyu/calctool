@@ -19,7 +19,7 @@
 
 <script>
 export default {
-  name: 'Calc',
+  name: 'CalcBoard',
 
   props: {
     calcData: {

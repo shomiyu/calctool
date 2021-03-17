@@ -62,7 +62,7 @@
               </dl>
             </div>
 
-            <Calc
+            <CalcBoard
               :calc-data="fontSizePxToEm"
               @onInput="handleChangeFontSizePxToEmVal"
             />
