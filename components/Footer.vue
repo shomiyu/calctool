@@ -17,12 +17,11 @@ export default {
 
 <style lang="scss" scoped>
 .Footer {
+  padding: 0 em(48);
 }
 
 .copyright {
   padding: em(20);
-  max-width: 1200px;
-  margin: auto;
   text-align: center;
   border-top: 1px solid $color-gray;
 }
