@@ -52,6 +52,9 @@ export default {
       this.lineHeightPxToEm[0].val / this.lineHeightPxToEm[1].val
     this.lineHeightPxToEm[2].val =
       Math.round(lineHeightPxToEmAnswer * 1000) / 1000
+
+    // サイドバー更新
+    this.$store.commit('updateActiveSidebarMenu', 'lineheight')
   },
 
   methods: {

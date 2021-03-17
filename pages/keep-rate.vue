@@ -47,6 +47,9 @@ export default {
   created() {
     const paddingTopAnswer = this.paddingTop[1].val / this.paddingTop[0].val
     this.paddingTop[2].val = Math.round(paddingTopAnswer * 10000) / 100
+
+    // サイドバー更新
+    this.$store.commit('updateActiveSidebarMenu', 'keep-rate')
   },
 
   methods: {

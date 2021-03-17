@@ -2,19 +2,40 @@
   <nav :class="$options.name">
     <h2 class="visuallyHidden">グローバルナビゲーション</h2>
     <ul class="pageList">
-      <li class="pageList__item">
+      <li
+        :class="{ 'is-active': $store.state.activeSidebarMenu === 'index' }"
+        class="pageList__item"
+      >
         <nuxt-link to="/">px → em</nuxt-link>
       </li>
-      <li class="pageList__item">
+      <li
+        :class="{
+          'is-active': $store.state.activeSidebarMenu === 'lineheight',
+        }"
+        class="pageList__item"
+      >
         <nuxt-link to="/lineheight">line-height</nuxt-link>
       </li>
-      <li class="pageList__item">
+      <li
+        :class="{ 'is-active': $store.state.activeSidebarMenu === 'px-rate' }"
+        class="pageList__item"
+      >
         <nuxt-link to="/px-rate">px → %/vw</nuxt-link>
       </li>
-      <li class="pageList__item">
+      <li
+        :class="{
+          'is-active': $store.state.activeSidebarMenu === 'rate-px',
+        }"
+        class="pageList__item"
+      >
         <nuxt-link to="/rate-px">% → px</nuxt-link>
       </li>
-      <li class="pageList__item">
+      <li
+        :class="{
+          'is-active': $store.state.activeSidebarMenu === 'keep-rate',
+        }"
+        class="pageList__item"
+      >
         <nuxt-link to="/keep-rate">縦横比を保持したまま可変</nuxt-link>
       </li>
     </ul>
@@ -38,12 +59,45 @@ export default {
 
   &__item {
     a {
-      font-size: fz(18);
       text-align: center;
       display: block;
-      padding: em(20, 18);
+      padding: em(20);
       border: 2px solid $color-gray;
       border-radius: 5px;
+    }
+
+    &.is-active {
+      a {
+        font-size: fz(18);
+        font-weight: bold;
+        padding: em(20, 18);
+        border-color: $color-black;
+        position: relative;
+
+        &::before,
+        &::after {
+          content: '';
+          display: inline-block;
+          position: absolute;
+          right: 100%;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        &::before {
+          border-right: 15px solid $color-black;
+          border-top: 8px solid transparent;
+          border-bottom: 8px solid transparent;
+          z-index: 1;
+        }
+
+        &::after {
+          border-right: 12px solid $color-white;
+          border-top: 6px solid transparent;
+          border-bottom: 6px solid transparent;
+          z-index: 2;
+        }
+      }
     }
   }
 

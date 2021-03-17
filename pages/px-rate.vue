@@ -48,6 +48,9 @@ export default {
   created() {
     const pxToRateAnswer = this.pxToRate[1].val / this.pxToRate[0].val
     this.pxToRate[2].val = Math.round(pxToRateAnswer * 10000) / 100
+
+    // サイドバー更新
+    this.$store.commit('updateActiveSidebarMenu', 'px-rate')
   },
 
   methods: {

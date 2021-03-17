@@ -83,6 +83,9 @@ export default {
       this.fontSizePxToEm[1].val / this.fontSizePxToEm[0].val
 
     this.otherPxToEm[2].val = this.otherPxToEm[1].val / this.otherPxToEm[0].val
+
+    // サイドバー更新
+    this.$store.commit('updateActiveSidebarMenu', 'index')
   },
 
   methods: {
