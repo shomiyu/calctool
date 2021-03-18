@@ -1,4 +1,5 @@
 require('dotenv').config()
+const { KIT_ID } = process.env
 const { API_KEY } = process.env
 const { API_URL } = process.env
 
@@ -87,6 +88,7 @@ export default {
     path: process.cwd(),
   },
   privateRuntimeConfig: {
+    kitId: KIT_ID,
     apiKey: API_KEY,
     apiUrl: API_URL,
   },
