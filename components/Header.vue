@@ -16,10 +16,14 @@ export default {
 
 <style lang="scss" scoped>
 .Header {
+  width: 100%;
   background-color: $color-white;
   padding: em(19) em(48);
   line-height: 1;
   box-shadow: 0 0 2px rgba(221, 221, 221, 0.8);
+  @include mq(lg) {
+    padding: em(16) em(24);
+  }
 
   &__title {
     font-size: fz(18);
