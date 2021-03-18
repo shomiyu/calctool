@@ -40,6 +40,29 @@
     border: 2px solid $color-gray;
     border-radius: 0 0 5px 5px;
 
+    .flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
+
+    .flex-2 {
+      width: 80%;
+      margin: auto;
+
+      .flex__item {
+        width: calc((100% - 2em) / 2);
+      }
+    }
+
+    .flex-3 {
+      width: 100%;
+
+      .flex__item {
+        width: calc((100% - 2em) / 3);
+      }
+    }
+
     h3 {
       font-size: fz(20);
       margin-bottom: em(15, 20);
