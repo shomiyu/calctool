@@ -54,6 +54,10 @@
 
     section {
       margin-top: em(32);
+
+      &:first-of-type {
+        margin-top: 0;
+      }
     }
 
     p {
@@ -77,6 +81,25 @@
     figcaption {
       font-size: fz(14);
       margin-top: em(8, 14);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 1em;
+      border: 1px solid $color-gray;
+
+      thead {
+        font-weight: bold;
+        background-color: $color-gray;
+      }
+
+      th,
+      td {
+        text-align: center;
+        padding: em(8) em(4);
+        border: 1px solid $color-gray;
+      }
     }
   }
 }
