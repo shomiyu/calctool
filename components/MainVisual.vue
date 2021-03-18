@@ -44,7 +44,7 @@ export default {
      * @return {Number}
      */
     getNumChara() {
-      // const today = 0
+      // const today = 1
       const today = this.getTodaysDate()
       const lastNum = today.toString().split('').pop()
       return lastNum
@@ -93,12 +93,23 @@ export default {
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    @include mq() {
+      flex-direction: column-reverse;
+      align-items: flex-start;
+    }
 
     &--reverse {
       flex-direction: row-reverse;
+      @include mq() {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+      }
 
       #{$parent}__todaysSaying {
-        margin: 0 2.5em 0 0;
+        margin: 0 em(40) 0 0;
+        @include mq() {
+          margin: auto auto em(24);
+        }
       }
     }
   }
@@ -116,7 +127,12 @@ export default {
   &__todaysSaying {
     color: $sub-text-color;
     width: 450px;
-    margin-left: em(40);
+    margin: 0 0 0 em(40);
+    @include mq() {
+      max-width: 450px;
+      width: 100%;
+      margin: auto auto em(24);
+    }
 
     .title {
       font-size: fz(18);

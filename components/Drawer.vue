@@ -6,7 +6,7 @@
         :class="{ 'is-active': $store.state.activeSidebarMenu === 'index' }"
         class="menu__item"
       >
-        <nuxt-link event="" to="/#target" @click.native.prevent="handleClick"
+        <nuxt-link event="" to="/" @click.native.prevent="handleClick"
           >px → em</nuxt-link
         >
       </li>
@@ -16,10 +16,7 @@
         }"
         class="menu__item"
       >
-        <nuxt-link
-          event=""
-          to="/lineheight#target"
-          @click.native.prevent="handleClick"
+        <nuxt-link event="" to="/lineheight" @click.native.prevent="handleClick"
           >line-height</nuxt-link
         >
       </li>
@@ -27,10 +24,7 @@
         :class="{ 'is-active': $store.state.activeSidebarMenu === 'px-rate' }"
         class="menu__item"
       >
-        <nuxt-link
-          event=""
-          to="/px-rate#target"
-          @click.native.prevent="handleClick"
+        <nuxt-link event="" to="/px-rate" @click.native.prevent="handleClick"
           >px → %/vw</nuxt-link
         >
       </li>
@@ -40,10 +34,7 @@
         }"
         class="menu__item"
       >
-        <nuxt-link
-          event=""
-          to="/rate-px#target"
-          @click.native.prevent="handleClick"
+        <nuxt-link event="" to="/rate-px" @click.native.prevent="handleClick"
           >% → px</nuxt-link
         >
       </li>
@@ -53,10 +44,7 @@
         }"
         class="menu__item"
       >
-        <nuxt-link
-          event=""
-          to="/keep-rate#target"
-          @click.native.prevent="handleClick"
+        <nuxt-link event="" to="/keep-rate" @click.native.prevent="handleClick"
           >縦横比を保持したまま可変</nuxt-link
         >
       </li>
