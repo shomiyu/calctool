@@ -1,0 +1,14 @@
+.slide {
+  transition: height 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.slide-enter-active {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}
+
+.slide-leave-active {
+  animation-duration: 0.5s;
+  animation-fill-mode: both;
+}

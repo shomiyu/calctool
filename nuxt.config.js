@@ -1,3 +1,7 @@
+require('dotenv').config()
+const { API_KEY } = process.env
+const { API_URL } = process.env
+
 const title = 'コーディング単位計算ツール'
 const description =
   '面倒なpxからemへの変換や、line-heightの計算、レスポンシブを考慮した横幅可変の計算など、コーディング時に計算機が必要になる値の変換をまとめて行えるツールです。'
@@ -32,12 +36,23 @@ export default {
   /*
    ** Global CSS
    */
-  css: ['ress', '~/assets/scss/base.scss'],
+  css: [
+    'ress',
+    '~/assets/scss/base.scss',
+    '~/assets/scss/common.scss',
+    '~/assets/scss/tips.scss',
+    '~/assets/scss/animation.scss',
+  ],
   /*
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['~/plugins/adobe-fonts'],
+  plugins: [
+    '~/plugins/adobe-fonts',
+    '~/plugins/axios',
+    '~/plugins/utils',
+    { src: '~/plugins/local-storage', mode: 'client' },
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -58,6 +73,7 @@ export default {
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
+    'nuxt-clipboard2',
   ],
   /*
    ** Axios module configuration
@@ -69,6 +85,10 @@ export default {
    */
   dotenv: {
     path: process.cwd(),
+  },
+  privateRuntimeConfig: {
+    apiKey: API_KEY,
+    apiUrl: API_URL,
   },
   /*
    ** style-resources module configuration

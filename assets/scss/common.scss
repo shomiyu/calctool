@@ -1,0 +1,57 @@
+.visuallyHidden {
+  position: absolute;
+  top: 0;
+  left: 0;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+// h1
+.titlePrimary {
+  font-size: fz(28);
+  font-family: 'maru-maru-gothic-blr-stdn', sans-serif;
+  color: $base-text-color;
+  text-align: center;
+  margin-bottom: em(32, 24);
+  @include mq() {
+    font-size: fz(24);
+    text-align: left;
+    margin-bottom: 1em;
+  }
+}
+
+.calcContents {
+  max-width: 816px;
+  width: 72%;
+  @include mq(lg) {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+.calcSection {
+  background-color: $color-lightYellow;
+  border: 2px solid $color-gray;
+  border-radius: 5px;
+  padding: em(32) em(32) em(40);
+  @include mq() {
+    padding: em(32) em(16) em(40);
+  }
+
+  // h2
+  &__title {
+    font-size: fz(22);
+    margin-bottom: 1em;
+  }
+
+  & + & {
+    margin-top: 2em;
+  }
+}
