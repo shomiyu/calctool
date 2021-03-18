@@ -24,7 +24,11 @@
 
 .calcContents {
   max-width: 816px;
-  width: 100%;
+  width: 72%;
+  @include mq(lg) {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .calcSection {

@@ -38,6 +38,7 @@ html.wf-active {
 
 .container {
   max-width: 1200px;
+  width: 90%;
   margin: auto;
 }
 
@@ -46,10 +47,16 @@ html.wf-active {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: flex-start;
+  @include mq(lg) {
+    flex-direction: column;
+  }
 }
 
 .sidebar {
   position: sticky;
   top: 2em;
+  @include mq(lg) {
+    position: static;
+  }
 }
 </style>

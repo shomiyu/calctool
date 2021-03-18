@@ -51,13 +51,31 @@ export default {
 <style lang="scss" scoped>
 .Sidebar {
   max-width: 312px;
-  width: 100%;
+  width: 26%;
+  padding-left: 1em;
+  @include mq(lg) {
+    max-width: 100%;
+    width: 100%;
+  }
 }
 
 .pageList {
   list-style: none;
+  @include mq(lg) {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
 
   &__item {
+    @include mq(lg) {
+      width: calc((100% - 24px - 24px) / 3);
+    }
+    @include mq(lg) {
+      width: calc((100% - 24px) / 2);
+    }
+
     a {
       text-align: center;
       display: block;
@@ -108,6 +126,9 @@ export default {
 
   &__item + &__item {
     margin-top: 1em;
+    @include mq(lg) {
+      margin: 0 0 1em;
+    }
   }
 }
 </style>
