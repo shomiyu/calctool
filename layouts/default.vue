@@ -6,7 +6,7 @@
       <div id="target" class="mainContents">
         <div class="container">
           <div class="contentFlex">
-            <Sidebar class="sidebar" />
+            <Sidebar v-if="!isMobile" class="sidebar" />
             <Nuxt />
           </div>
         </div>
@@ -18,8 +18,35 @@
 
 <script>
 export default {
+  data() {
+    return {
+      windowWidth: 1440,
+    }
+  },
+
+  computed: {
+    /**
+     * 1023px以下をモバイルと判定
+     *
+     * @return {Boolean}
+     */
+    isMobile() {
+      return this.windowWidth < 1024
+    },
+  },
+
   mounted() {
     this.$adobeFonts(document)
+
+    // レンダリング時のウィンドウ幅を初期値として取得する
+    this.windowWidth = window.innerWidth
+
+    // ブラウザリサイズの度にウィンドウ幅を取得する
+    this.$nextTick(() => {
+      window.addEventListener('resize', () => {
+        this.windowWidth = window.innerWidth
+      })
+    })
   },
 }
 </script>
@@ -57,6 +84,7 @@ html.wf-active {
   top: 2em;
   @include mq(lg) {
     position: static;
+    display: none;
   }
 }
 </style>
