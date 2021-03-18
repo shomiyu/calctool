@@ -25,42 +25,44 @@
           @before-leave="$beforeLeave($event)"
           @leave="$leave($event)"
         >
-          <article v-show="isShowTip" class="tips__contents slide">
-            <h3>%単位とvw単位</h3>
+          <div v-show="isShowTip" class="tips__contents slide">
             <section>
-              <h4>%単位</h4>
-              <p>%単位は親要素の幅に対する割合で可変する単位です。</p>
-              <p>
-                モバイル端末のタブレットからスマートフォンまで、1枚のデザインカンプを様々なデバイスサイズで同じように見せるためには％単位などを駆使して幅や要素を可変させる必要があります。
-              </p>
-              <p>
-                余談ですが、コンテンツ幅にwidthとmax-widthを組み合わせるとメディアクエリ(@media)を使わずにレスポンシブ対応が可能になります。次のサンプルは幅1199px以下になった場合に90%の幅で可変し続けるスタイル定義の例です。
-              </p>
-              <pre>
+              <h3>%単位とvw単位</h3>
+              <section>
+                <h4>%単位</h4>
+                <p>%単位は親要素の幅に対する割合で可変する単位です。</p>
+                <p>
+                  モバイル端末のタブレットからスマートフォンまで、1枚のデザインカンプを様々なデバイスサイズで同じように見せるためには％単位などを駆使して幅や要素を可変させる必要があります。
+                </p>
+                <p>
+                  余談ですが、コンテンツ幅にwidthとmax-widthを組み合わせるとメディアクエリ(@media)を使わずにレスポンシブ対応が可能になります。次のサンプルは幅1199px以下になった場合に90%の幅で可変し続けるスタイル定義の例です。
+                </p>
+                <pre>
 <code>.container {
   width: 90%;
   max-width: 1200px;
   margin: auto;
 }</code>
-              </pre>
+                </pre>
+              </section>
+              <section>
+                <h4>vw単位</h4>
+                <p>
+                  vwはviewport
+                  widthの略でビューポート（ウィンドウ）の幅に対する割合で可変する単位です。
+                </p>
+                <p>
+                  作者はファーストビューなどのビジュアル重視な部分で『要素や文字を画像のように見せたい』『どんなデバイスサイズでも画像のこの位置にこの文字を配置したい』という場合にvw単位をよく使用しています。
+                </p>
+                <p>
+                  以下の画像の例は作者の別のサイトですが、ファーストビューの要素の幅やpadding、font-size、marginにvwを多用していて、どのデバイスサイズでも同じように見せています。
+                </p>
+                <figure>
+                  <img src="/images/img-odogubako-vw.gif" alt="" />
+                </figure>
+              </section>
             </section>
-            <section>
-              <h4>vw単位</h4>
-              <p>
-                vwはviewport
-                widthの略でビューポート（ウィンドウ）の幅に対する割合で可変する単位です。
-              </p>
-              <p>
-                作者はファーストビューなどのビジュアル重視な部分で『要素や文字を画像のように見せたい』『どんなデバイスサイズでも画像のこの位置にこの文字を配置したい』という場合にvw単位をよく使用しています。
-              </p>
-              <p>
-                以下の画像の例は作者の別のサイトですが、ファーストビューの要素の幅やpadding、font-size、marginにvwを多用していて、どのデバイスサイズでも同じように見せています。
-              </p>
-              <figure>
-                <img src="/images/img-odogubako-vw.gif" alt="" />
-              </figure>
-            </section>
-          </article>
+          </div>
         </transition>
       </div>
     </section>
