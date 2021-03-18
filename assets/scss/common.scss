@@ -20,6 +20,11 @@
   color: $base-text-color;
   text-align: center;
   margin-bottom: em(32, 24);
+  @include mq() {
+    font-size: fz(24);
+    text-align: left;
+    margin-bottom: 1em;
+  }
 }
 
 .calcContents {
@@ -36,6 +41,9 @@
   border: 2px solid $color-gray;
   border-radius: 5px;
   padding: em(32) em(32) em(40);
+  @include mq() {
+    padding: em(32) em(16) em(40);
+  }
 
   // h2
   &__title {

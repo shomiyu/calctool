@@ -84,7 +84,7 @@ export default {
   height: 100vh;
   padding: em(120) em(40) 1em;
   background-color: $color-white;
-  box-shadow: 0 0 1px 0px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 2px rgba(221, 221, 221, 0.8);
 }
 
 .menu {

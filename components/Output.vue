@@ -100,6 +100,9 @@ export default {
   position: absolute;
   top: em(-30, 12);
   left: -10%;
+  @include mq() {
+    left: 0;
+  }
 
   &::after {
     content: '';

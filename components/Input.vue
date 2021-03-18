@@ -75,6 +75,9 @@ export default {
     border-radius: 2px;
     padding-left: em(16, 18);
     margin-right: em(16, 18);
+    @include mq() {
+      width: 70%;
+    }
   }
 
   &__entryAction {

@@ -2,6 +2,7 @@
   margin-top: em(24);
 
   &__button {
+    font-weight: bold;
     text-align: center;
     line-height: 1.188;
     display: block;
@@ -10,6 +11,10 @@
     background-color: $color-gray;
     border-radius: 2px;
     position: relative;
+    @include mq() {
+      font-size: fz(18);
+      padding: em(16) 0;
+    }
 
     &::after {
       content: '';
@@ -33,25 +38,36 @@
     }
   }
 
-  // h3
   &__contents {
     padding: em(32) em(32) em(48);
     background-color: $color-white;
     border: 2px solid $color-gray;
     border-radius: 0 0 5px 5px;
+    @include mq() {
+      padding: em(32) em(16) em(16);
+    }
 
     .flex {
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
+      @include mq() {
+        flex-direction: column;
+      }
     }
 
     .flex-2 {
       width: 80%;
       margin: auto;
+      @include mq() {
+        width: 100%;
+      }
 
       .flex__item {
         width: calc((100% - 2em) / 2);
+        @include mq() {
+          width: 100%;
+        }
       }
     }
 
@@ -60,6 +76,9 @@
 
       .flex__item {
         width: calc((100% - 2em) / 3);
+        @include mq() {
+          width: 100%;
+        }
       }
     }
 
@@ -68,6 +87,9 @@
       margin-bottom: em(15, 20);
       border-left: 10px solid $color-gray;
       padding-left: em(16, 20);
+      @include mq() {
+        font-size: fz(18);
+      }
     }
 
     h4 {
@@ -94,11 +116,18 @@
       background-color: $color-black;
       padding: 2em 2.5em 0.5em;
       margin-bottom: 1em;
+      overflow: auto;
+      @include mq() {
+        padding: 1.5em 1em 0.5em;
+      }
     }
 
     figure {
       width: 60%;
       margin: auto auto 1em;
+      @include mq() {
+        width: 100%;
+      }
     }
 
     figcaption {

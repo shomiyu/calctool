@@ -60,10 +60,23 @@ export default {
 .CalcBoard {
   display: flex;
   align-items: flex-start;
+  @include mq() {
+    flex-direction: column;
+  }
 
   &__feild {
     width: calc(100% / 3);
     max-width: 250px;
+    @include mq() {
+      width: 100%;
+      max-width: 100%;
+    }
+  }
+
+  &__feild + &__feild {
+    @include mq() {
+      margin-top: 1.5em;
+    }
   }
 }
 </style>
