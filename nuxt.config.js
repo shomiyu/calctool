@@ -1,3 +1,7 @@
+require('dotenv').config()
+const { API_KEY } = process.env
+const { API_URL } = process.env
+
 const title = 'コーディング単位計算ツール'
 const description =
   '面倒なpxからemへの変換や、line-heightの計算、レスポンシブを考慮した横幅可変の計算など、コーディング時に計算機が必要になる値の変換をまとめて行えるツールです。'
@@ -45,6 +49,7 @@ export default {
    */
   plugins: [
     '~/plugins/adobe-fonts',
+    '~/plugins/axios',
     '~/plugins/utils',
     { src: '~/plugins/local-storage', mode: 'client' },
   ],
@@ -80,6 +85,10 @@ export default {
    */
   dotenv: {
     path: process.cwd(),
+  },
+  privateRuntimeConfig: {
+    apiKey: API_KEY,
+    apiUrl: API_URL,
   },
   /*
    ** style-resources module configuration

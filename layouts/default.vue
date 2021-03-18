@@ -37,8 +37,10 @@
 
 <script>
 import Drawer from '~/components/Drawer.vue'
+
 export default {
   components: { Drawer },
+
   data() {
     return {
       isShowMenu: false,
