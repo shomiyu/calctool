@@ -47,7 +47,7 @@ export default {
       {
         hid: 'og:image',
         property: 'og:image',
-        content: uri + 'images/shared/img_ogp.jpg',
+        content: uri + 'images/img_ogp.jpg',
       },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:site', content: '@MykiiTech' },
