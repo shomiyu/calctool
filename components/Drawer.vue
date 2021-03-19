@@ -16,7 +16,10 @@
         }"
         class="menu__item"
       >
-        <nuxt-link event="" to="/lineheight" @click.native.prevent="handleClick"
+        <nuxt-link
+          event=""
+          to="/line-height"
+          @click.native.prevent="handleClick"
           >line-height</nuxt-link
         >
       </li>

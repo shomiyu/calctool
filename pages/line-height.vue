@@ -114,7 +114,7 @@
 export default {
   data() {
     return {
-      title: 'line-height を使用する計算',
+      title: 'line-height に使用する計算',
       isShowTip: false,
       lineHeightPxToEm: [
         {
@@ -182,7 +182,7 @@ export default {
         {
           hid: 'og:url',
           property: 'og:url',
-          content: 'https://coding-calc.com/lineheight',
+          content: 'https://coding-calc.com/line-height',
         },
         { hid: 'og:type', property: 'og:type', content: 'article' },
       ],

@@ -14,7 +14,7 @@
         }"
         class="pageList__item"
       >
-        <nuxt-link to="/lineheight#target">line-height</nuxt-link>
+        <nuxt-link to="/line-height#target">line-height</nuxt-link>
       </li>
       <li
         :class="{ 'is-active': $store.state.activeSidebarMenu === 'px-rate' }"
