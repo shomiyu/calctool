@@ -2,20 +2,13 @@
   <nav :class="$options.name">
     <h2 class="visuallyHidden">グローバルナビゲーション</h2>
     <ul class="pageList">
-      <li class="pageList__item">
-        <nuxt-link to="/#target">px → em</nuxt-link>
-      </li>
-      <li class="pageList__item">
-        <nuxt-link to="/line-height#target">line-height</nuxt-link>
-      </li>
-      <li class="pageList__item">
-        <nuxt-link to="/px-rate#target">px → %/vw</nuxt-link>
-      </li>
-      <li class="pageList__item">
-        <nuxt-link to="/rate-px#target">% → px</nuxt-link>
-      </li>
-      <li class="pageList__item">
-        <nuxt-link to="/keep-rate#target">縦横比を保持したまま可変</nuxt-link>
+      <li
+        v-for="menu in menuList"
+        :key="menu.id"
+        :class="{ 'is-active': currentMenu === menu.id }"
+        class="pageList__item"
+      >
+        <nuxt-link :to="menu.path" v-text="menu.text" />
       </li>
     </ul>
   </nav>
@@ -24,6 +17,20 @@
 <script>
 export default {
   name: 'Sidebar',
+
+  props: {
+    // メニュー一覧
+    menuList: {
+      type: Array,
+      required: true,
+    },
+
+    // アクティブなメニュー
+    currentMenu: {
+      type: String,
+      required: true,
+    },
+  },
 }
 </script>
 

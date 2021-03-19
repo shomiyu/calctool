@@ -112,6 +112,8 @@
 
 <script>
 export default {
+  name: 'LineHeight',
+
   data() {
     return {
       title: 'line-height に使用する計算',
@@ -152,6 +154,10 @@ export default {
 
     // サイドバー更新
     this.$store.commit('updateActiveSidebarMenu', 'lineheight')
+  },
+
+  mounted() {
+    this.$nuxt.$emit('updateMenu', this.$options.name)
   },
 
   methods: {

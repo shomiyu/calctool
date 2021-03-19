@@ -89,6 +89,8 @@
 
 <script>
 export default {
+  name: 'Index',
+
   data() {
     return {
       title: 'px単位からem単位への変換',
@@ -123,9 +125,10 @@ export default {
 
   created() {
     this.pxToEm[2].val = this.pxToEm[1].val / this.pxToEm[0].val
+  },
 
-    // サイドバー更新
-    this.$store.commit('updateActiveSidebarMenu', 'index')
+  mounted() {
+    this.$nuxt.$emit('updateMenu', this.$options.name)
   },
 
   methods: {

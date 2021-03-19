@@ -74,6 +74,8 @@
 
 <script>
 export default {
+  name: 'PxRate',
+
   data() {
     return {
       title: '固定値から割合に変換する計算',
@@ -112,6 +114,10 @@ export default {
 
     // サイドバー更新
     this.$store.commit('updateActiveSidebarMenu', 'px-rate')
+  },
+
+  mounted() {
+    this.$nuxt.$emit('updateMenu', this.$options.name)
   },
 
   methods: {
