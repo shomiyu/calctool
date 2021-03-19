@@ -1,6 +1,6 @@
 <template>
   <article class="calcContents">
-    <h1 class="titlePrimary">px単位からem単位への変換</h1>
+    <h1 class="titlePrimary" v-text="title" />
     <!-- fontSize -->
     <section class="calcSection">
       <h2 class="calcSection__title">pxからemに変換する</h2>
@@ -91,6 +91,7 @@
 export default {
   data() {
     return {
+      title: 'px単位からem単位への変換',
       isShowTip: false,
       pxToEm: [
         {
@@ -146,6 +147,12 @@ export default {
         return this.pxToEm[2].val
       }
     },
+  },
+
+  head() {
+    return {
+      title: this.title,
+    }
   },
 }
 </script>
