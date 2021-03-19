@@ -14,6 +14,8 @@
         <Drawer
           v-show="isShowMenu"
           class="drawer"
+          :menu-list="getMenuList"
+          :current-menu="currentMenu"
           @closeMenu="isShowMenu = false"
         />
       </transition>

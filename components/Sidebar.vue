@@ -19,7 +19,7 @@ export default {
   name: 'Sidebar',
 
   props: {
-    // メニュー一覧
+    // メニューデータ
     menuList: {
       type: Array,
       required: true,
