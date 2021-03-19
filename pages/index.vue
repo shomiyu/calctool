@@ -26,16 +26,28 @@
         >
           <div v-show="isShowTip" class="tips__contents slide">
             <section>
+              <h3>使い方</h3>
+              <p>
+                該当の要素の文字サイズ(font-size)とemに変換したいpx数を使用します。
+              </p>
+              <figure>
+                <img src="~/assets/images/pages/img_usage_px_em.png" alt="" />
+                <figcaption>
+                  テキストボックスの文字サイズが16pxに対して、下の要素と8pxの距離を空ける(0.5em)
+                </figcaption>
+              </figure>
+            </section>
+            <section>
               <h3>em単位ってどうやって使う？</h3>
               <p>emはfont-sizeを基準に相対的に変化する単位です。</p>
               <p>
                 ルートのfont-sizeを基準にするrem単位と違って、親要素のfont-sizeを基準に変化するのがemです。<br />そのため、要素のfont-sizeに合わせて可変するような余白関連に使用すると便利です。
               </p>
               <p>
-                また、em単位を使用する要素にfont-sizeの指定がある場合は、親要素ではなくその要素のfont-sizeを基準にします。font-sizeは指定がなければ親要素から継承するので、その要素のfont-sizeを基準にすると考えても良いでしょう。
+                例えば見出し要素の下に40px相当の余白を入れたい場合、見出しのfont-sizeに対してem単位でmargin-bottomを設定すると、レスポンシブなどでfont-sizeを変えるだけで相対的に余白も変わるようになります。
               </p>
               <p>
-                例えば、見出し要素の下に40px相当の余白を入れたい場合、見出しのfont-sizeに対してem単位でmargin-bottomを設定すると、レスポンシブなどでfont-sizeを変えるだけで相対的に余白も変わるようになります。
+                また、em単位を使用する要素にfont-sizeの指定がある場合は、親要素ではなくその要素のfont-sizeを基準にします。font-sizeは指定がなければ親要素から継承するので、その要素のfont-sizeを基準にすると考えても良いでしょう。
               </p>
               <pre>
 <code>h2 {
