@@ -1,8 +1,8 @@
 /* eslint-disable */
-export default function ({ app }, inject) {
+export default function ({ app, $config }, inject) {
   const adobeFonts = (d) => {
     var config = {
-        kitId: 'tao8jsr',
+        kitId: $config.kitId,
         scriptTimeout: 3000,
         async: true,
       },

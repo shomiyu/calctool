@@ -87,8 +87,10 @@ export default {
   dotenv: {
     path: process.cwd(),
   },
-  privateRuntimeConfig: {
+  publicRuntimeConfig: {
     kitId: KIT_ID,
+  },
+  privateRuntimeConfig: {
     apiKey: API_KEY,
     apiUrl: API_URL,
   },
