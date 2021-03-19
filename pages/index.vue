@@ -1,6 +1,6 @@
 <template>
   <article class="calcContents">
-    <h1 class="titlePrimary">px単位からem単位への変換</h1>
+    <h1 class="titlePrimary" v-text="title" />
     <!-- fontSize -->
     <section class="calcSection">
       <h2 class="calcSection__title">pxからemに変換する</h2>
@@ -55,7 +55,7 @@
                 <p>直近の親要素のfont-sizeを基準にします。</p>
                 <figure>
                   <img
-                    src="/images/img_usage_em_image.png"
+                    src="~/assets/images/pages/img_usage_em_image.png"
                     alt="親要素のpタグの文字サイズが16pxのとき、文字サイズを12pxにしたいなら0.75emになる"
                   />
                   <figcaption>font-sizeにemを使う</figcaption>
@@ -66,14 +66,14 @@
                 <p>emを使用する要素のfont-sizeを基準にします。</p>
                 <figure>
                   <img
-                    src="/images/img_usage_em_margin.png"
+                    src="~/assets/images/pages/img_usage_em_margin.png"
                     alt="div要素の文字サイズが16pxのとき、margin-bottomに24pxほしいなら1.5emになる"
                   />
                   <figcaption>margin-bottomにemを使う</figcaption>
                 </figure>
                 <figure>
                   <img
-                    src="/images/img_usage_em_padding.png"
+                    src="~/assets/images/pages/img_usage_em_padding.png"
                     alt="div要素の文字サイズが16pxのとき、paddingに40pxほしいなら2.5emになる"
                   />
                   <figcaption>paddingにemを使う</figcaption>
@@ -91,6 +91,7 @@
 export default {
   data() {
     return {
+      title: 'px単位からem単位への変換',
       isShowTip: false,
       pxToEm: [
         {
@@ -146,6 +147,12 @@ export default {
         return this.pxToEm[2].val
       }
     },
+  },
+
+  head() {
+    return {
+      title: this.title,
+    }
   },
 }
 </script>

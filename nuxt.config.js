@@ -3,7 +3,9 @@ const { KIT_ID } = process.env
 const { API_KEY } = process.env
 const { API_URL } = process.env
 
-const title = 'コーディング単位計算ツール'
+const title = '計算が苦手な文系のための コーディング単位計算ツール'
+// const uri = 'https://coding-calc.com/'
+const uri = 'https://distracted-hopper-b0996a.netlify.app/' // 確認用、リリース時変更
 const description =
   '面倒なpxからemへの変換や、line-heightの計算、レスポンシブを考慮した横幅可変の計算など、コーディング時に計算機が必要になる値の変換をまとめて行えるツールです。'
 
@@ -24,13 +26,31 @@ export default {
    */
   head: {
     title,
+    titleTemplate: '%s |' + ' ' + title,
     htmlAttrs: {
       lang: 'ja',
+      prefix: 'og: http://ogp.me/ns#',
     },
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: description },
+      { hid: 'og:site_name', property: 'og:site_name', content: title },
+      { hid: 'og:type', property: 'og:type', content: 'website' },
+      { hid: 'og:url', property: 'og:url', content: uri },
+      { hid: 'og:title', property: 'og:title', content: title },
+      {
+        hid: 'og:description',
+        property: 'og:description',
+        content: description,
+      },
+      {
+        hid: 'og:image',
+        property: 'og:image',
+        content: uri + 'images/shared/img_ogp.jpg',
+      },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      { name: 'twitter:site', content: '@MykiiTech' },
     ],
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
@@ -66,13 +86,19 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/dotenv',
+    '@nuxtjs/gtm',
   ],
+  gtm: {
+    id: process.env.GTM_ID,
+    pageTracking: true,
+  },
   /*
    ** Nuxt.js modules
    */
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
     '@nuxtjs/style-resources',
     'nuxt-clipboard2',
   ],
@@ -81,6 +107,13 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  /**
+   * Sitemap module configuration
+   */
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://coding-calc.com/',
+  },
   /*
    ** dotenv module configuration
    */

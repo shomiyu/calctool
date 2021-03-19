@@ -141,6 +141,7 @@ export default {
 
     .saying {
       line-height: 1.7;
+      white-space: pre-wrap;
     }
 
     .name {

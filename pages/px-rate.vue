@@ -1,6 +1,6 @@
 <template>
   <article class="calcContents">
-    <h1 class="titlePrimary">固定値から割合に変換する計算</h1>
+    <h1 class="titlePrimary" v-text="title" />
 
     <!-- pxから割合 -->
     <section class="calcSection">
@@ -58,7 +58,10 @@
                   以下の画像の例は作者の別のサイトですが、ファーストビューの要素の幅やpadding、font-size、marginにvwを多用していて、どのデバイスサイズでも同じように見せています。
                 </p>
                 <figure>
-                  <img src="/images/img-odogubako-vw.gif" alt="" />
+                  <img
+                    src="~/assets/images/pages/img-odogubako-vw.gif"
+                    alt=""
+                  />
                 </figure>
               </section>
             </section>
@@ -73,6 +76,7 @@
 export default {
   data() {
     return {
+      title: '固定値から割合に変換する計算',
       isShowTip: false,
       pxToRate: [
         {
@@ -129,6 +133,20 @@ export default {
         return this.pxToRate[2].val
       }
     },
+  },
+
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://coding-calc.com/px-rate',
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+      ],
+    }
   },
 }
 </script>

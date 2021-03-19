@@ -2,7 +2,18 @@
   <header :class="$options.name">
     <p :class="`${$options.name}__title`">
       <nuxt-link to="/">
-        <em>計算が苦手な文系のための</em>コーディング単位計算ツール
+        <em>
+          <img
+            class="copy"
+            src="~/assets/images/shared/logo_copy.svg"
+            alt="計算が苦手な文系のための"
+          />
+        </em>
+        <img
+          class="title"
+          src="~/assets/images/shared/logo_title.svg"
+          alt="コーディング単位計算ツール"
+        />
       </nuxt-link>
     </p>
   </header>
@@ -35,6 +46,17 @@ export default {
       display: block;
       margin-bottom: em(8, 12);
     }
+  }
+}
+
+.copy {
+  max-width: 170px;
+}
+
+.title {
+  max-width: 260px;
+  @include mq(lg) {
+    max-width: 200px;
   }
 }
 </style>

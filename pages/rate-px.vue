@@ -1,6 +1,6 @@
 <template>
   <article class="calcContents">
-    <h1 class="titlePrimary">割合から固定値に変換する計算</h1>
+    <h1 class="titlePrimary" v-text="title" />
 
     <!-- 割合からpx -->
     <section class="calcSection">
@@ -17,6 +17,7 @@
 export default {
   data() {
     return {
+      title: '割合から固定値に変換する計算',
       rateToPx: [
         {
           id: 0,
@@ -72,6 +73,20 @@ export default {
         return this.rateToPx[2].val
       }
     },
+  },
+
+  head() {
+    return {
+      title: this.title,
+      meta: [
+        {
+          hid: 'og:url',
+          property: 'og:url',
+          content: 'https://coding-calc.com/rate-px',
+        },
+        { hid: 'og:type', property: 'og:type', content: 'article' },
+      ],
+    }
   },
 }
 </script>
