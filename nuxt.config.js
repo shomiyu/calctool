@@ -86,7 +86,12 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/dotenv',
+    '@nuxtjs/gtm',
   ],
+  gtm: {
+    id: process.env.GTM_ID,
+    pageTracking: true,
+  },
   /*
    ** Nuxt.js modules
    */
