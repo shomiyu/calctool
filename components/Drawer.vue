@@ -2,20 +2,12 @@
   <nav :class="$options.name">
     <h2 class="visuallyHidden">グローバルナビゲーション</h2>
     <ul class="menu">
-      <li
-        :class="{ 'is-active': $store.state.activeSidebarMenu === 'index' }"
-        class="menu__item"
-      >
+      <li class="menu__item">
         <nuxt-link event="" to="/" @click.native.prevent="handleClick"
           >px → em</nuxt-link
         >
       </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'lineheight',
-        }"
-        class="menu__item"
-      >
+      <li class="menu__item">
         <nuxt-link
           event=""
           to="/line-height"
@@ -23,30 +15,17 @@
           >line-height</nuxt-link
         >
       </li>
-      <li
-        :class="{ 'is-active': $store.state.activeSidebarMenu === 'px-rate' }"
-        class="menu__item"
-      >
+      <li class="menu__item">
         <nuxt-link event="" to="/px-rate" @click.native.prevent="handleClick"
           >px → %/vw</nuxt-link
         >
       </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'rate-px',
-        }"
-        class="menu__item"
-      >
+      <li class="menu__item">
         <nuxt-link event="" to="/rate-px" @click.native.prevent="handleClick"
           >% → px</nuxt-link
         >
       </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'keep-rate',
-        }"
-        class="menu__item"
-      >
+      <li class="menu__item">
         <nuxt-link event="" to="/keep-rate" @click.native.prevent="handleClick"
           >縦横比を保持したまま可変</nuxt-link
         >
@@ -60,7 +39,7 @@ export default {
   name: 'Drawer',
 
   methods: {
-    handleClick() {
+    handleClick(event) {
       this.$emit('closeMenu')
       this.$router.push({ path: event.target.pathname })
     },

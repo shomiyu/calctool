@@ -2,40 +2,19 @@
   <nav :class="$options.name">
     <h2 class="visuallyHidden">グローバルナビゲーション</h2>
     <ul class="pageList">
-      <li
-        :class="{ 'is-active': $store.state.activeSidebarMenu === 'index' }"
-        class="pageList__item"
-      >
+      <li class="pageList__item">
         <nuxt-link to="/#target">px → em</nuxt-link>
       </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'lineheight',
-        }"
-        class="pageList__item"
-      >
+      <li class="pageList__item">
         <nuxt-link to="/line-height#target">line-height</nuxt-link>
       </li>
-      <li
-        :class="{ 'is-active': $store.state.activeSidebarMenu === 'px-rate' }"
-        class="pageList__item"
-      >
+      <li class="pageList__item">
         <nuxt-link to="/px-rate#target">px → %/vw</nuxt-link>
       </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'rate-px',
-        }"
-        class="pageList__item"
-      >
+      <li class="pageList__item">
         <nuxt-link to="/rate-px#target">% → px</nuxt-link>
       </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'keep-rate',
-        }"
-        class="pageList__item"
-      >
+      <li class="pageList__item">
         <nuxt-link to="/keep-rate#target">縦横比を保持したまま可変</nuxt-link>
       </li>
     </ul>

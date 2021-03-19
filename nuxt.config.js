@@ -68,12 +68,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [
-    '~/plugins/adobe-fonts',
-    '~/plugins/axios',
-    '~/plugins/utils',
-    { src: '~/plugins/local-storage', mode: 'client' },
-  ],
+  plugins: ['~/plugins/adobe-fonts', '~/plugins/axios', '~/plugins/utils'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
