@@ -57,6 +57,7 @@ export default {
   },
 
   mounted() {
+    this.$adobeFonts(document)
     this.$nuxt.$emit('updateMenu', this.$options.name)
   },
 

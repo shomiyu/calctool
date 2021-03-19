@@ -43,11 +43,7 @@
 </template>
 
 <script>
-import Drawer from '~/components/Drawer.vue'
-
 export default {
-  components: { Drawer },
-
   data() {
     return {
       isShowMenu: false,
@@ -105,8 +101,6 @@ export default {
   },
 
   mounted() {
-    this.$adobeFonts(document)
-
     // レンダリング時のウィンドウ幅を初期値として取得する
     this.windowWidth = window.innerWidth
 
@@ -131,14 +125,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-html {
-  visibility: hidden;
-}
-
-html.wf-active {
-  visibility: visible;
-}
-
 .main {
   @include mq(lg) {
     padding-top: em(70);
