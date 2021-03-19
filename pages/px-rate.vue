@@ -58,7 +58,10 @@
                   以下の画像の例は作者の別のサイトですが、ファーストビューの要素の幅やpadding、font-size、marginにvwを多用していて、どのデバイスサイズでも同じように見せています。
                 </p>
                 <figure>
-                  <img src="/images/img-odogubako-vw.gif" alt="" />
+                  <img
+                    src="~/assets/images/pages/img-odogubako-vw.gif"
+                    alt=""
+                  />
                 </figure>
               </section>
             </section>
