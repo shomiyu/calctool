@@ -40,7 +40,7 @@
 
   &__contents {
     padding: em(32) em(32) em(48);
-    background-color: $color-white;
+    background-color: $color-off-white;
     border: 2px solid $color-gray;
     border-radius: 0 0 5px 5px;
     @include mq() {
