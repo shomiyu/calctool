@@ -73,6 +73,7 @@ export default {
   modules: [
     // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
+    '@nuxtjs/sitemap',
     '@nuxtjs/style-resources',
     'nuxt-clipboard2',
   ],
@@ -81,6 +82,13 @@ export default {
    ** See https://axios.nuxtjs.org/options
    */
   axios: {},
+  /**
+   * Sitemap module configuration
+   */
+  sitemap: {
+    path: '/sitemap.xml',
+    hostname: 'https://coding-calc.com/',
+  },
   /*
    ** dotenv module configuration
    */
