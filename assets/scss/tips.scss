@@ -39,12 +39,24 @@
   }
 
   &__contents {
-    padding: em(32) em(32) em(48);
+    padding: em(32) em(32) em(24);
     background-color: $color-off-white;
     border: 2px solid $color-gray;
     border-radius: 0 0 5px 5px;
     @include mq() {
       padding: em(32) em(16) em(16);
+    }
+
+    .full {
+      width: 100%;
+    }
+
+    .wide {
+      width: 80%;
+    }
+
+    .small {
+      width: 40%;
     }
 
     .flex {
@@ -84,7 +96,7 @@
 
     h3 {
       font-size: fz(20);
-      margin-bottom: em(15, 20);
+      margin-bottom: 1.25em;
       border-left: 10px solid $color-gray;
       padding-left: em(16, 20);
       @include mq() {
@@ -106,7 +118,7 @@
     }
 
     p {
-      margin-bottom: 1em;
+      margin-bottom: 1.75em;
     }
 
     pre {
@@ -124,7 +136,7 @@
 
     figure {
       width: 60%;
-      margin: auto auto 1em;
+      margin: auto auto 1.75em;
       @include mq() {
         width: 100%;
       }
@@ -138,7 +150,7 @@
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 1em;
+      margin-bottom: 1.75em;
       border: 1px solid $color-gray;
 
       thead {

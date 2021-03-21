@@ -65,6 +65,94 @@
           />
         </div>
       </div>
+
+      <div class="tips">
+        <button
+          type="button"
+          :class="{ 'is-active': isShowTip }"
+          class="tips__button"
+          @click="isShowTip = !isShowTip"
+        >
+          TIPS
+        </button>
+        <transition
+          name="slide"
+          @before-enter="$beforeEnter($event)"
+          @enter="$enter($event)"
+          @before-leave="$beforeLeave($event)"
+          @leave="$leave($event)"
+        >
+          <div v-show="isShowTip" class="tips__contents slide">
+            <section>
+              <h3>使い方</h3>
+              <p>
+                line-heightが考慮されていないデザインデータで、line-heightを含んだ本来必要な要素間の余白を求め、em単位に変換します。
+              </p>
+              <p>
+                下記のサンプルデータでは要素間に40pxの余白が空いていますが、単純に40pxの余白を与えるとブラウザ上で各要素のline-heightが計算され、40px以上の余白が空きます。
+              </p>
+              <figure class="wide">
+                <img
+                  src="~/assets/images/pages/img_usage_line_height_margin_xd_data.jpg"
+                  alt=""
+                />
+                <figcaption>
+                  2つの要素の間に40pxの余白が空いたAdobeXDのデザインサンプル
+                </figcaption>
+              </figure>
+              <figure class="wide">
+                <img
+                  src="~/assets/images/pages/img_usage_marginLineheight_2.png"
+                  alt="XDデータを文字で置き換えたイメージ"
+                />
+              </figure>
+              <p>
+                要素間の余白を求めるのでひとつめの要素(上の要素)とふたつめの要素(下の要素)のそれぞれの行間・文字サイズと、間のほしい値の5つのデータを扱います。
+              </p>
+              <figure class="small">
+                <img
+                  src="~/assets/images/pages/img_usage_marginLineheight_3.png"
+                  alt="使用する値"
+                />
+              </figure>
+              <p>
+                ひとつめの要素に設定したい場合とふたつめの要素に設定したい場合でem値が異なるので、好きなほうをコピーしてお使いください。
+              </p>
+            </section>
+            <section>
+              <h3>サンプルデータを計算式に当てはめた結果</h3>
+              <p>下記の計算式で本来使用するpx値を求めることができます。</p>
+              <figure class="full">
+                <img
+                  src="~/assets/images/pages/img_usage_marginLineheight_math.png"
+                  alt="計算式"
+                />
+              </figure>
+              <p>
+                この計算式からemに置き換えて設定すると以下のようになります。
+              </p>
+              <figure class="small">
+                <img
+                  src="~/assets/images/pages/img_usage_marginLineheight_output.png"
+                  alt="ひとつめの要素を基準にしたとき"
+                />
+                <figcaption>
+                  ひとつめの要素にmargin-bottomを設定すると0.917em
+                </figcaption>
+              </figure>
+              <figure class="small">
+                <img
+                  src="~/assets/images/pages/img_usage_marginLineheight_output2.png"
+                  alt="ふたつめの要素を基準にしたとき"
+                />
+                <figcaption>
+                  ふたつめの要素にmargin-topを設定すると1.375em
+                </figcaption>
+              </figure>
+            </section>
+          </div>
+        </transition>
+      </div>
     </section>
   </article>
 </template>
