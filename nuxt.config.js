@@ -4,8 +4,7 @@ const { API_KEY } = process.env
 const { API_URL } = process.env
 
 const title = '計算が苦手な文系のための コーディング単位計算ツール'
-// const uri = 'https://coding-calc.com/'
-const uri = 'https://distracted-hopper-b0996a.netlify.app/' // 確認用、リリース時変更
+const uri = 'https://coding-calc.com/'
 const description =
   '面倒なpxからemへの変換や、line-heightの計算、レスポンシブを考慮した横幅可変の計算など、コーディング時に計算機が必要になる値の変換をまとめて行えるツールです。'
 
