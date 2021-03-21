@@ -78,6 +78,11 @@ export default {
           text: 'line-height',
         },
         {
+          id: 'LineHeightMargin',
+          path: '/line-height-margin#target',
+          text: 'line-heightの要素間の余白',
+        },
+        {
           id: 'PxRate',
           path: '/px-rate#target',
           text: 'px → %/vw',
