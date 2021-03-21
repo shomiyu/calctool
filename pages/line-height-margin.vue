@@ -3,7 +3,9 @@
     <h1 class="titlePrimary" v-text="title" />
     <!-- 縦横比 -->
     <section class="calcSection">
-      <h2 class="calcSection__title">要素間の余白を求める</h2>
+      <h2 class="calcSection__title">
+        line-heightを考慮した要素間の余白を求める
+      </h2>
       <!-- ひとつめの要素 -->
       <div class="groupContents groupContents--hasBorder">
         <div
@@ -163,7 +165,7 @@ export default {
 
   data() {
     return {
-      title: 'line-heightを含めた要素間の余白の計算',
+      title: '要素間の余白の計算',
       isShowTip: false,
       lineHeightMargin: [
         {
