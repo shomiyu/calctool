@@ -1,3 +1,4 @@
+// スライド
 .slide {
   transition: height 0.5s ease-in-out;
   overflow: hidden;
@@ -11,4 +12,17 @@
 .slide-leave-active {
   animation-duration: 0.5s;
   animation-fill-mode: both;
+}
+
+// スライド+フェード
+.slideFade-enter-active {
+  transition: all 0.3s ease;
+}
+.slideFade-leave-active {
+  transition: all 0.8s cubic-bezier(1, 0.5, 0.8, 1);
+}
+.slideFade-enter,
+.slideFade-leave-to {
+  transform: translateY(10px);
+  opacity: 0;
 }
