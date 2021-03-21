@@ -98,6 +98,8 @@
 
 <script>
 export default {
+  name: 'KeepRate',
+
   data() {
     return {
       title: '縦横比を保持したまま可変',
@@ -133,9 +135,11 @@ export default {
   created() {
     const paddingTopAnswer = this.paddingTop[1].val / this.paddingTop[0].val
     this.paddingTop[2].val = Math.round(paddingTopAnswer * 10000) / 100
+  },
 
-    // サイドバー更新
-    this.$store.commit('updateActiveSidebarMenu', 'keep-rate')
+  mounted() {
+    this.$adobeFonts(document)
+    this.$nuxt.$emit('updateMenu', this.$options.name)
   },
 
   methods: {

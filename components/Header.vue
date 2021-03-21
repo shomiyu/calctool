@@ -40,6 +40,10 @@ export default {
     font-size: fz(18);
     font-weight: bold;
 
+    a {
+      display: inline-block;
+    }
+
     em {
       font-size: fz(12);
       font-style: normal;

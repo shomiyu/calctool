@@ -57,7 +57,7 @@
                 <p>
                   以下の画像の例は作者の別のサイトですが、ファーストビューの要素の幅やpadding、font-size、marginにvwを多用していて、どのデバイスサイズでも同じように見せています。
                 </p>
-                <figure>
+                <figure class="small">
                   <img
                     src="~/assets/images/pages/img-odogubako-vw.gif"
                     alt=""
@@ -74,6 +74,8 @@
 
 <script>
 export default {
+  name: 'PxRate',
+
   data() {
     return {
       title: '固定値から割合に変換する計算',
@@ -112,6 +114,11 @@ export default {
 
     // サイドバー更新
     this.$store.commit('updateActiveSidebarMenu', 'px-rate')
+  },
+
+  mounted() {
+    this.$adobeFonts(document)
+    this.$nuxt.$emit('updateMenu', this.$options.name)
   },
 
   methods: {

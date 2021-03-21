@@ -3,7 +3,7 @@
     <div
       v-for="data in calcData"
       :key="data.id"
-      :class="`${$options.name}__feild`"
+      :class="`${$options.name}__field`"
     >
       <template v-if="data.type === 'arg'">
         <Input
@@ -64,7 +64,7 @@ export default {
     flex-direction: column;
   }
 
-  &__feild {
+  &__field {
     width: calc(100% / 3);
     max-width: 250px;
     @include mq() {
@@ -73,7 +73,7 @@ export default {
     }
   }
 
-  &__feild + &__feild {
+  &__field + &__field {
     @include mq() {
       margin-top: 1.5em;
     }

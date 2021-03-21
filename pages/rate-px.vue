@@ -15,6 +15,8 @@
 
 <script>
 export default {
+  name: 'RatePx',
+
   data() {
     return {
       title: '割合から固定値に変換する計算',
@@ -52,6 +54,11 @@ export default {
 
     // サイドバー更新
     this.$store.commit('updateActiveSidebarMenu', 'rate-px')
+  },
+
+  mounted() {
+    this.$adobeFonts(document)
+    this.$nuxt.$emit('updateMenu', this.$options.name)
   },
 
   methods: {

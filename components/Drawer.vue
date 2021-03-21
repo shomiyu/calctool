@@ -3,50 +3,17 @@
     <h2 class="visuallyHidden">グローバルナビゲーション</h2>
     <ul class="menu">
       <li
-        :class="{ 'is-active': $store.state.activeSidebarMenu === 'index' }"
+        v-for="menu in menuList"
+        :key="menu.id"
+        :class="{ 'is-active': currentMenu === menu.id }"
         class="menu__item"
       >
-        <nuxt-link event="" to="/" @click.native.prevent="handleClick"
-          >px → em</nuxt-link
-        >
-      </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'lineheight',
-        }"
-        class="menu__item"
-      >
-        <nuxt-link event="" to="/lineheight" @click.native.prevent="handleClick"
-          >line-height</nuxt-link
-        >
-      </li>
-      <li
-        :class="{ 'is-active': $store.state.activeSidebarMenu === 'px-rate' }"
-        class="menu__item"
-      >
-        <nuxt-link event="" to="/px-rate" @click.native.prevent="handleClick"
-          >px → %/vw</nuxt-link
-        >
-      </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'rate-px',
-        }"
-        class="menu__item"
-      >
-        <nuxt-link event="" to="/rate-px" @click.native.prevent="handleClick"
-          >% → px</nuxt-link
-        >
-      </li>
-      <li
-        :class="{
-          'is-active': $store.state.activeSidebarMenu === 'keep-rate',
-        }"
-        class="menu__item"
-      >
-        <nuxt-link event="" to="/keep-rate" @click.native.prevent="handleClick"
-          >縦横比を保持したまま可変</nuxt-link
-        >
+        <nuxt-link
+          event=""
+          :to="menu.path"
+          @click.native.prevent="handleClick"
+          v-text="menu.text"
+        />
       </li>
     </ul>
   </nav>
@@ -56,8 +23,22 @@
 export default {
   name: 'Drawer',
 
+  props: {
+    // メニューデータ
+    menuList: {
+      type: Array,
+      required: true,
+    },
+
+    // アクティブなメニュー
+    currentMenu: {
+      type: String,
+      required: true,
+    },
+  },
+
   methods: {
-    handleClick() {
+    handleClick(event) {
       this.$emit('closeMenu')
       this.$router.push({ path: event.target.pathname })
     },

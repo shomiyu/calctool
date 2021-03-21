@@ -13,7 +13,9 @@
           v-text="unit"
         />です！
       </button>
-      <span v-if="showCopyMessage" class="copyMessage">コピーしたよ😎</span>
+      <transition name="slideFade">
+        <span v-if="showCopyMessage" class="copyMessage">コピーしたよ😎</span>
+      </transition>
     </dd>
   </dl>
 </template>
@@ -99,21 +101,30 @@ export default {
   border: 1px solid $color-black;
   position: absolute;
   top: em(-30, 12);
-  left: -10%;
-  @include mq() {
-    left: 0;
-  }
+  left: 0;
 
+  &::before,
   &::after {
     content: '';
     display: inline-block;
-    border-top: 8px solid $color-black;
-    border-left: 4px solid transparent;
-    border-right: 4px solid transparent;
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
+  }
+
+  &::before {
+    border-top: 6px solid $color-white;
+    border-left: 3px solid transparent;
+    border-right: 3px solid transparent;
+    z-index: 1;
+  }
+
+  &::after {
+    border-top: 8px solid $color-black;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    z-index: 0;
   }
 }
 </style>

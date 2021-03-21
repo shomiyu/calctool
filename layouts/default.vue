@@ -14,6 +14,8 @@
         <Drawer
           v-show="isShowMenu"
           class="drawer"
+          :menu-list="getMenuList"
+          :current-menu="currentMenu"
           @closeMenu="isShowMenu = false"
         />
       </transition>
@@ -25,7 +27,12 @@
       <div id="target" class="mainContents">
         <div class="container">
           <div class="contentFlex">
-            <Sidebar v-if="!isMobile" class="sidebar" />
+            <Sidebar
+              v-if="!isMobile"
+              class="sidebar"
+              :menu-list="getMenuList"
+              :current-menu="currentMenu"
+            />
             <Nuxt />
           </div>
         </div>
@@ -36,15 +43,12 @@
 </template>
 
 <script>
-import Drawer from '~/components/Drawer.vue'
-
 export default {
-  components: { Drawer },
-
   data() {
     return {
       isShowMenu: false,
       windowWidth: 1440,
+      currentMenu: 'Index',
     }
   },
 
@@ -57,11 +61,51 @@ export default {
     isMobile() {
       return this.windowWidth < 1024
     },
+
+    /**
+     * メニュー一覧を生成
+     */
+    getMenuList() {
+      return [
+        {
+          id: 'Index',
+          path: '/#target',
+          text: 'px → em',
+        },
+        {
+          id: 'LineHeightMargin',
+          path: '/line-height-margin#target',
+          text: '要素間の余白',
+        },
+        {
+          id: 'LineHeight',
+          path: '/line-height#target',
+          text: 'line-height',
+        },
+        {
+          id: 'PxRate',
+          path: '/px-rate#target',
+          text: 'px → %/vw',
+        },
+        {
+          id: 'RatePx',
+          path: '/rate-px#target',
+          text: '% → px',
+        },
+        {
+          id: 'KeepRate',
+          path: '/keep-rate#target',
+          text: '縦横比を保持したまま可変',
+        },
+      ]
+    },
+  },
+
+  created() {
+    this.setListener()
   },
 
   mounted() {
-    this.$adobeFonts(document)
-
     // レンダリング時のウィンドウ幅を初期値として取得する
     this.windowWidth = window.innerWidth
 
@@ -72,18 +116,20 @@ export default {
       })
     })
   },
+
+  methods: {
+    setListener() {
+      this.$nuxt.$on('updateMenu', this.updateSelectMenu)
+    },
+
+    updateSelectMenu(menuName) {
+      this.currentMenu = menuName
+    },
+  },
 }
 </script>
 
 <style lang="scss" scoped>
-html {
-  visibility: hidden;
-}
-
-html.wf-active {
-  visibility: visible;
-}
-
 .main {
   @include mq(lg) {
     padding-top: em(70);

@@ -13,6 +13,15 @@
   margin: -1px;
 }
 
+// Adobe Fonts Loading
+html {
+  visibility: hidden;
+}
+
+html.wf-active {
+  visibility: visible;
+}
+
 // h1
 .titlePrimary {
   font-size: fz(28);
