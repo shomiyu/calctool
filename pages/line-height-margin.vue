@@ -83,8 +83,8 @@ export default {
           type: 'arg',
           group: 'firstContents',
           introduction: '要素の行間が',
-          val: 40,
-          defaultNum: 40,
+          val: 48,
+          defaultNum: 48,
           endLabel: 'pxで',
         },
         {
