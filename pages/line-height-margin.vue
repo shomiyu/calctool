@@ -330,6 +330,9 @@ export default {
     border: 1px solid $color-gray;
     border-radius: 5px;
     padding: em(24) em(40);
+    @include mq(sm) {
+      padding: em(24);
+    }
   }
 
   &__field {

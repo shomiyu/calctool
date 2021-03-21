@@ -48,15 +48,15 @@
     }
 
     .full {
-      width: 100%;
+      max-width: 100%;
     }
 
     .wide {
-      width: 80%;
+      max-width: 560px;
     }
 
     .small {
-      width: 40%;
+      max-width: 300px;
     }
 
     .flex {
@@ -115,6 +115,10 @@
       &:first-of-type {
         margin-top: 0;
       }
+
+      & + & {
+        margin-top: 2.5em;
+      }
     }
 
     p {
@@ -135,7 +139,8 @@
     }
 
     figure {
-      width: 60%;
+      max-width: 400px;
+      width: 100%;
       margin: auto auto 1.75em;
       @include mq() {
         width: 100%;
