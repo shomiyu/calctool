@@ -8,7 +8,7 @@
     >
       <div :class="`${$options.name}__illust`">
         <img
-          :src="require(`~/assets/images/shared/illust_${getNumChara}.svg`)"
+          :src="require(`~/assets/images/shared/illust_${getNumChara()}.svg`)"
           alt=""
         />
       </div>
@@ -39,24 +39,12 @@ export default {
     },
 
     /**
-     * 今日の日付の一桁目を取得する
-     *
-     * @return {Number}
-     */
-    getNumChara() {
-      // const today = 1
-      const today = this.getTodaysDate()
-      const lastNum = today.toString().split('').pop()
-      return lastNum
-    },
-
-    /**
      * 数字キャラを右に寄せるかどうか
      *
      * @return {Boolean}
      */
     isRightSideNumChara() {
-      const numChara = Number(this.getNumChara)
+      const numChara = Number(this.getNumChara())
       const rightSideNumCharaList = [1, 2, 3, 4, 5, 7, 8, 0]
 
       if (rightSideNumCharaList.includes(numChara)) {
@@ -78,6 +66,18 @@ export default {
       const day = today.getDate()
 
       return day
+    },
+
+    /**
+     * 今日の日付の一桁目を取得する
+     *
+     * @return {Number}
+     */
+    getNumChara() {
+      // const today = 0
+      const today = this.getTodaysDate()
+      const lastNum = today.toString().split('').pop()
+      return lastNum
     },
   },
 }
