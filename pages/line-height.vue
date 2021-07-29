@@ -1,6 +1,12 @@
 <template>
   <article class="calcContents">
     <h1 class="titlePrimary" v-text="title" />
+    <p class="info">
+      <time datetime="2021-7-29">Update 2021.7.29</time>
+      <span class="info__text"
+        >デザインツールに合わせて文字サイズと行間の入力順を入れ替えました！</span
+      >
+    </p>
 
     <!-- pxから倍率 -->
     <section class="calcSection">
@@ -122,17 +128,17 @@ export default {
         {
           id: 0,
           type: 'arg',
-          introduction: 'デザインの行間が',
-          val: 28,
-          defaultNum: 28,
+          introduction: '文字サイズが',
+          val: 16,
+          defaultNum: 16,
           endLabel: 'pxで',
         },
         {
           id: 1,
           type: 'arg',
-          introduction: 'デザインの文字サイズが',
-          val: 16,
-          defaultNum: 16,
+          introduction: '行間が',
+          val: 28,
+          defaultNum: 28,
           endLabel: 'pxなら',
         },
         {
@@ -147,8 +153,9 @@ export default {
   },
 
   created() {
-    const lineHeightPxToEmAnswer =
-      this.lineHeightPxToEm[0].val / this.lineHeightPxToEm[1].val
+    const fontSize = this.lineHeightPxToEm[0].val
+    const lineHeight = this.lineHeightPxToEm[1].val
+    const lineHeightPxToEmAnswer = lineHeight / fontSize
     this.lineHeightPxToEm[2].val =
       Math.round(lineHeightPxToEmAnswer * 1000) / 1000
 
@@ -171,9 +178,9 @@ export default {
         this.lineHeightPxToEm[args.id].val = args.argNum
 
         // 再計算
-        const firstNum = this.lineHeightPxToEm[0].val
-        const secondNum = this.lineHeightPxToEm[1].val
-        const answer = firstNum / secondNum
+        const lineHeight = this.lineHeightPxToEm[1].val
+        const fontSize = this.lineHeightPxToEm[0].val
+        const answer = lineHeight / fontSize
 
         // 小数点の調整
         this.lineHeightPxToEm[2].val = Math.round(answer * 1000) / 1000
@@ -198,4 +205,25 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.info {
+  font-size: fz(14);
+  width: 100%;
+  margin-bottom: em(14, 14);
+  position: relative;
+
+  time {
+    font-size: fz(11);
+    display: inline-block;
+    border: 1px solid;
+    border-radius: 2px;
+    padding: 0.25em 0.5em;
+    margin-right: em(10, 11);
+    margin-bottom: em(10, 11);
+  }
+
+  &__text {
+    display: inline-block;
+  }
+}
+</style>
